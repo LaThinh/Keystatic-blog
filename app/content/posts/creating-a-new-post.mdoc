@@ -1,0 +1,38 @@
+---
+title: Creating a new post
+categories:
+  - web-developer
+authors:
+  - paul-la
+  - david
+---
+## [**Creating a new post**](https://keystatic.com/docs/installation-next-js#creating-a-new-post)
+
+In our Keystatic config file, we've set the&nbsp;`path`&nbsp;property for our&nbsp;`posts`&nbsp;collection to&nbsp;`src/content/posts/*`.
+
+As a result, creating a new post from the Keystatic Admin UI should create a new&nbsp;`content`&nbsp;directory in the&nbsp;`src`&nbsp;directory, with the new post&nbsp;`.mdoc`&nbsp;file inside!
+
+Go ahead — create a new post from the Admin UI, and hit save.
+
+You will find your new post inside the&nbsp;`src/content/posts`&nbsp;directory:
+
+```
+src
+└── content
+    └── posts
+        └── my-first-post.mdoc
+```
+
+Navigate to that file in your code editor and verify that you can see the Markdown content you entered. For example:
+
+```
+---
+title: My First Post
+---
+
+This is my very first post. I am **super** excited.
+```
+
+Video Demo
+
+{% youtube-video youtubeVideoId="tzPL0yhLBTw" /%}

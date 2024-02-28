@@ -3,31 +3,73 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+	--foreground-rgb: 0, 0, 0;
+	--background-start-rgb: 214, 219, 220;
+	--background-end-rgb: 255, 255, 255;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+	:root {
+		--foreground-rgb: 255, 255, 255;
+		--background-start-rgb: 0, 0, 0;
+		--background-end-rgb: 0, 0, 0;
+	}
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+	color: rgb(var(--foreground-rgb));
+	/* background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb)); */
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+	.text-balance {
+		text-wrap: balance;
+	}
+
+	.container {
+		margin: 0 auto;
+		max-width: 1440px;
+		@apply px-3 lg:px-5;
+	}
+
+	a {
+		text-decoration: none;
+		@apply text-sky-500 hover:text-sky-700 transition duration-300;
+	}
+
+	img {
+		@apply transition duration-300;
+	}
+}
+
+.text-gradient-blue {
+	@apply bg-gradient-to-tr from-blue-500 to-sky-300 bg-clip-text text-transparent;
+}
+
+.page-title {
+	@apply capitalize text-xl md:text-2xl lg:text-4xl font-bold mx-auto text-center;
+}
+
+.text-gradient {
+	@apply animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 
+  bg-clip-text text-transparent;
+}
+
+.post-detail a {
+	@apply text-sky-500 no-underline hover:text-sky-600;
+}
+
+.sidebar {
+}
+
+.sidebar .block {
+	@apply rounded-lg border shadow-sm;
+}
+
+.sidebar .block .block-title {
+	@apply px-5 py-2 border-b bg-slate-200 font-bold text-lg;
+}
+
+.sidebar .block .block-content {
+	@apply px-5;
 }

@@ -1,0 +1,17 @@
+{
+  "name": "Sophia",
+  "avatar": "/images/avatars/sophia/avatar.jpg",
+  "showcase": [
+    {
+      "discriminant": "link",
+      "value": {
+        "label": "Link KeyStatic",
+        "url": "keystatic.com"
+      }
+    },
+    {
+      "discriminant": "youtubeVideoId",
+      "value": "5FFa17c4K5c"
+    }
+  ]
+}

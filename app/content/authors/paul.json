@@ -1,0 +1,35 @@
+{
+  "name": "Paul",
+  "avatar": "/images/avatars/paul/avatar.jpg",
+  "showcase": [
+    {
+      "discriminant": "link",
+      "value": {
+        "label": "Website",
+        "url": "https://blog.laquocthinh.com/"
+      }
+    },
+    {
+      "discriminant": "youtubeVideoId",
+      "value": "XzujXXm1FDo"
+    },
+    {
+      "discriminant": "link",
+      "value": {
+        "label": "Google",
+        "url": "https://www.google.com"
+      }
+    },
+    {
+      "discriminant": "link",
+      "value": {
+        "label": "Youtube",
+        "url": "youtube.com"
+      }
+    },
+    {
+      "discriminant": "youtubeVideoId",
+      "value": "tzPL0yhLBTw"
+    }
+  ]
+}

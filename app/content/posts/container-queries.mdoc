@@ -1,0 +1,163 @@
+---
+title: TailwindCss Container Queries
+post_image: /images/posts/container-queries/post_image.webp
+categories: []
+authors:
+  - paul-la
+  - david
+---
+# @tailwindcss/container-queries
+
+A plugin for Tailwind CSS v3.2+ that provides utilities for container queries.
+
+## Installation
+
+Install the plugin from npm:
+
+```
+npm install @tailwindcss/container-queries
+```
+
+Then add the plugin to your&nbsp;`tailwind.config.js`&nbsp;file:
+
+```
+// tailwind.config.js
+module.exports = {
+theme: {
+// ...
+},
+plugins: [
+require('@tailwindcss/container-queries'),
+// ...
+],
+}
+```
+
+## Usage
+
+Start by marking an element as a container using the&nbsp;`@container`&nbsp;class, and then applying styles based on the size of that container using the container variants like&nbsp;`@md:`,&nbsp;`@lg:`, and&nbsp;`@xl:`:
+
+```
+<div class="@container">
+  <div class="@lg:underline">
+    <!-- This text will be underlined when the container is larger than `32rem` -->
+  </div>
+</div>
+```
+
+By default we provide&nbsp;[container sizes](https://github.com/tailwindlabs/tailwindcss-container-queries#configuration)&nbsp;from&nbsp;`@xs`&nbsp;(`20rem`) to&nbsp;`@7xl`&nbsp;(`80rem`).
+
+### Named containers
+
+You can optionally name containers using a&nbsp;`@container/{name}`&nbsp;class, and then include that name in the container variants using classes like&nbsp;`@lg/{name}:underline`:
+
+```
+<div class="@container/main">
+  <!-- ... -->
+  <div class="@lg/main:underline">
+    <!-- This text will be underlined when the "main" container is larger than `32rem` -->
+  </div>
+</div>
+```
+
+### Arbitrary container sizes
+
+In addition to using one of the&nbsp;[container sizes](https://github.com/tailwindlabs/tailwindcss-container-queries#configuration)&nbsp;provided by default, you can also create one-off sizes using any arbitrary value:
+
+```
+<div class="@container">
+  <div class="@[17.5rem]:underline">
+    <!-- This text will be underlined when the container is larger than `17.5rem` -->
+  </div>
+</div>
+```
+
+### Removing a container
+
+To stop an element from acting as a container, use the&nbsp;`@container-normal`&nbsp;class.
+
+### With a prefix
+
+If you have configured Tailwind to use a prefix, make sure to prefix both the&nbsp;`@container`&nbsp;class and any classes where you are using a container query modifier:
+
+```
+<div class="tw-@container">
+  <!-- ... -->
+  <div class="@lg:tw-underline">
+    <!-- ... -->
+  </div>
+</div>
+```
+
+## Configuration
+
+By default we ship with the following configured values:
+
+Table
+
+## Tables
+
+{% table %}
+- Name
+- Css
+- Width
+---
+- @xs
+- @container (min-width: 20rem /* 320px */)
+- 320px
+---
+- @sm
+- @container (min-width: 24rem /* 384px */)
+- 384px
+---
+- @md
+- @container (min-width: 28rem /* 448px */)
+- 448px
+---
+- @lg
+- @container (min-width: 32rem /* 512px */)
+- 512px
+---
+- @xl
+- @container (min-width: 36rem /* 576px */)
+- 576px
+---
+- @2xl
+- @container (min-width: 42rem /* 672px */)
+- 672px
+---
+- @3xl
+- @container (min-width: 42rem /* 768px */)
+- 768px
+---
+- @4xl
+- @container (min-width: 42rem /* 896px */)
+- 896px
+---
+- @5xl
+- @container (min-width: 42rem /* 1024px */)
+- 1024px
+---
+- @6xl
+- @container (min-width: 42rem /* 1152px */)
+- 1152px
+---
+- @7xl
+- @container (min-width: 42rem /* 1280px */)
+- 1280px
+{% /table %}
+
+You can configure which values are available for this plugin under the&nbsp;`containers`&nbsp;key in your&nbsp;`tailwind.config.js`&nbsp;file:
+
+```
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      containers: {
+        '2xs': '16rem',
+      },
+    },
+  },
+}
+```
