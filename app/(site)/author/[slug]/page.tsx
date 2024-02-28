@@ -7,6 +7,7 @@ import Link from "next/link";
 import PostGrid from "@/app/components/Post/PostGrid";
 import ShowcaseLink from "@/app/components/Post/ShowcaseLink";
 import ShowcaseYoutube from "@/app/components/Post/ShowcaseYoutube";
+import { Reader } from "@/app/keystatic/utils";
 
 export default async function AuthorPage({ params }: { params: { slug: string } }) {
 	const { slug } = params;
@@ -63,4 +64,10 @@ export default async function AuthorPage({ params }: { params: { slug: string } 
 			</div>
 		</div>
 	);
+}
+
+export async function generateStaticParams() {
+	const authorSlugs = await Reader.collections.authors.list();
+
+	return authorSlugs.map((authorSlug) => ({ slug: authorSlug }));
 }

@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import type { Metadata, ResolvingMetadata } from "next";
 import ShowcaseYoutube from "@/app/components/Post/ShowcaseYoutube";
+import { Reader } from "@/app/keystatic/utils";
 
 const reader = createReader(process.cwd(), keystaticConfig);
 
@@ -100,4 +101,10 @@ export default async function Post({ params }: { params: { slug: string } }) {
 			</div>
 		</div>
 	);
+}
+
+export async function generateStaticParams() {
+	const postSlugs = await Reader.collections.posts.list();
+
+	return postSlugs.map((postSlug) => ({ slug: postSlug }));
 }
