@@ -4,6 +4,11 @@ import ShowcaseYoutube from "./app/components/Post/ShowcaseYoutube";
 export default config({
 	storage: {
 		kind: "local",
+		// kind: "cloud",
+	},
+
+	cloud: {
+		project: "key-static-blog/keystatic-blog",
 	},
 
 	ui: {
