@@ -6,7 +6,7 @@ export default function Layout() {
 		<html>
 			<head />
 			<body>
-				<div className="keystatic w-full max-w-[1600px] m-auto">
+				<div className="keystatic w-full max-w-[1920px] m-auto">
 					<KeystaticApp />
 				</div>
 			</body>

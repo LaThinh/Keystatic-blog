@@ -3,7 +3,7 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata: Metadata = {
-	title: "Keystatic Blog",
+	title: "Keystatic Blog | Paul La",
 	description: "Keystatic Blog Content Management",
 };
 

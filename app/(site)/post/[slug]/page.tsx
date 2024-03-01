@@ -8,6 +8,7 @@ import Image from "next/image";
 import type { Metadata, ResolvingMetadata } from "next";
 import ShowcaseYoutube from "@/app/components/Post/ShowcaseYoutube";
 import { Reader } from "@/app/keystatic/utils";
+import CategoryTags from "@/app/components/Post/CategoryTags";
 
 const reader = createReader(process.cwd(), keystaticConfig);
 
@@ -35,7 +36,7 @@ export async function generateMetadata({ params, searchParams }: Props, parent: 
 		title: post?.title,
 		description: post?.title,
 		openGraph: {
-			images: [`../images${post?.post_image}`, ...previousImages],
+			images: [`../images${post?.heroImage}`, ...previousImages],
 		},
 	};
 }
@@ -59,12 +60,18 @@ export default async function Post({ params }: { params: { slug: string } }) {
 		<div className="post-detail w-full my-10 m-auto flex flex-col gap-10 max-w-5xl">
 			<div className="post-detail border rounded-2xl shadow-sm bg-white @container">
 				<h1 className="page-title @lg:text-5xl @lg:leading-normal text-gradient !my-2 ">{post?.title}</h1>
-				{post?.post_image && (
+				{post?.heroImage && (
 					<div className="post-image">
-						<Image src={`${post.post_image}`} width="1200" height="500" alt={post?.title || "Post Title"} />
+						<Image src={`${post.heroImage}`} width="1200" height="500" alt={post?.title || "Post Title"} />
 					</div>
 				)}
+
 				<article className="prose @4xl:prose-lg lg:max-w-5xl p-3 @xl:p-5 @4xl:p-6">
+					{post.categories && post.categories.length > 0 && (
+						<div className="post-categories w-full flex items-center justify-center">
+							<CategoryTags categories={post.categories} />
+						</div>
+					)}
 					{/* <pre>{JSON.stringify(authors, null, 2)}</pre> */}
 					{postContent && (
 						<div className="post-content ">
@@ -86,9 +93,9 @@ export default async function Post({ params }: { params: { slug: string } }) {
 											<Image
 												src={author.avatar || "/images/avatar.jpg"}
 												alt={`Avatar for ${author.name}`}
-												width={100}
-												height={100}
-												className="rounded-full w-24 h-24 overflow-hidden object-cover	"
+												width={80}
+												height={80}
+												className="rounded-full w-20 h-20 overflow-hidden object-cover	"
 											/>
 											<strong className="!my-2">{author?.name}</strong>
 										</Link>

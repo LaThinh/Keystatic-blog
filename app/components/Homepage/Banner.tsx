@@ -12,7 +12,7 @@ export default function Banner({ props }: { props: any }) {
 	const settings = {
 		dots: true,
 		arrows: false,
-		autoplay: false,
+		autoplay: true,
 		infinite: true,
 		speed: 2000,
 		slidesToShow: 1,
@@ -20,7 +20,7 @@ export default function Banner({ props }: { props: any }) {
 	};
 
 	return (
-		<div className="slider-container w-full max-w-[1920px] m-auto relative">
+		<div className="slider-container w-full  m-auto relative">
 			<Slider {...settings} className="flex flex-col">
 				{props.map((item: any, index: number) => (
 					<div className="banner-item flex flex-col relative" key={index}>
@@ -28,9 +28,9 @@ export default function Banner({ props }: { props: any }) {
 							<Image
 								src={item?.image || "/"}
 								alt={item?.title || "title"}
-								width={1920}
-								height={800}
-								className="w-full aspect-[16/9] object-cover"
+								width={2400}
+								height={900}
+								className="w-full max-h-[900px] aspect-[20/9] object-cover"
 							/>
 						</div>
 						<div

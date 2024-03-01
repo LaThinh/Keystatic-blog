@@ -1,11 +1,30 @@
-import { config, fields, collection, component, singleton } from "@keystatic/core";
+import { config, fields, collection, component, singleton, LocalConfig, CloudConfig } from "@keystatic/core";
 import ShowcaseYoutube from "./app/components/Post/ShowcaseYoutube";
 
+const isPro = process.env.NODE_ENV === "production";
+
+const localMode: LocalConfig["storage"] = {
+	kind: "local",
+};
+
+const remoteMode: CloudConfig["storage"] = {
+	kind: "cloud",
+	pathPrefix: "prod",
+};
+
 export default config({
-	storage: {
-		// kind: "local",
-		kind: "cloud",
-	},
+	// storage: {
+	// 	// kind: "local",
+	// 	// kind: "cloud",
+	// 	kind: "github",
+	// 	pathPrefix: "prod",
+	// 	repo: {
+	// 		owner: "LaThinh",
+	// 		name: "Keystatic-blog",
+	// 	},
+	// },
+
+	storage: isPro ? remoteMode : localMode,
 
 	cloud: {
 		project: "key-static-blog/keystatic-blog",
@@ -28,7 +47,7 @@ export default config({
 			path: "app/content/posts/*",
 			format: { contentField: "content" },
 			entryLayout: "content",
-
+			columns: ["title", "publishDate", "draft", "heroImage"],
 			schema: {
 				title: fields.slug({
 					name: { label: "Title" },
@@ -63,8 +82,20 @@ export default config({
 						}),
 					},
 				}),
-				post_image: fields.image({
-					label: "Post Image",
+				draft: fields.checkbox({
+					label: "Draft",
+					description: "Set this post as draft to prevent it from being published",
+				}),
+				publishDate: fields.date({
+					label: "Publish Date",
+					validation: {
+						isRequired: true,
+					},
+					defaultValue: { kind: "today" },
+				}),
+				heroImage: fields.image({
+					label: "Hero Image",
+					description: "Feature Image for this post",
 					directory: "public/images/posts",
 					publicPath: "/images/posts",
 				}),
@@ -105,9 +136,24 @@ export default config({
 			slugField: "category",
 			path: "app/content/categories/*",
 			format: { data: "json" },
+			columns: ["category", "description", "customColor"],
+
 			schema: {
 				category: fields.slug({
-					name: { label: "Category" },
+					name: { label: "Category Name" },
+				}),
+				description: fields.text({
+					label: "Description",
+					multiline: true,
+				}),
+				customColor: fields.text({
+					label: "Color Code",
+					validation: {
+						length: {
+							min: 0,
+							max: 7,
+						},
+					},
 				}),
 			},
 		}),
@@ -132,6 +178,8 @@ export default config({
 			slugField: "name",
 			path: "app/content/authors/*",
 			format: { data: "json" },
+			columns: ["name", "avatar"],
+			previewUrl: "https://github.com/",
 			schema: {
 				name: fields.slug({ name: { label: "Author Name" } }),
 				avatar: fields.image({
@@ -224,6 +272,22 @@ export default config({
 					title: fields.text({ label: "About Title" }),
 					intro: fields.text({ label: "About Intro" }),
 				}),
+
+				intro: fields.blocks(
+					{
+						title: {
+							label: "Intro Title",
+							schema: fields.text({ label: "About Title" }),
+						},
+						intro: {
+							label: "About Intro",
+							schema: fields.text({ label: "About Intro" }),
+						},
+					},
+					{
+						label: "About Intro",
+					}
+				),
 			},
 		}),
 	},
