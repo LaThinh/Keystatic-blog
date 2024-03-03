@@ -9,7 +9,7 @@ const localMode: LocalConfig["storage"] = {
 
 const remoteMode: CloudConfig["storage"] = {
 	kind: "cloud",
-	//pathPrefix: "prod",
+	pathPrefix: "prod",
 };
 
 export default config({

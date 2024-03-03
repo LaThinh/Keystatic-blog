@@ -3,6 +3,7 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata: Metadata = {
+	metadataBase: new URL("https://la-keystatic.vercel.app/"),
 	title: "Keystatic Blog | Paul La",
 	description: "Keystatic Blog Content Management",
 };

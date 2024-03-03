@@ -14,13 +14,14 @@ export default function Banner({ props }: { props: any }) {
 		arrows: false,
 		autoplay: true,
 		infinite: true,
-		speed: 2000,
+		speed: 5000,
 		slidesToShow: 1,
 		slidesToScroll: 1,
 	};
 
 	return (
 		<div className="slider-container w-full  m-auto relative">
+			Banner
 			<Slider {...settings} className="flex flex-col">
 				{props.map((item: any, index: number) => (
 					<div className="banner-item flex flex-col relative" key={index}>
@@ -29,7 +30,7 @@ export default function Banner({ props }: { props: any }) {
 								src={item?.image || "/"}
 								alt={item?.title || "title"}
 								width={2400}
-								height={900}
+								height={1100}
 								className="w-full max-h-[900px] aspect-[20/9] object-cover"
 							/>
 						</div>

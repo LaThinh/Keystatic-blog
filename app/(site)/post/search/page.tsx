@@ -1,5 +1,5 @@
 import PostGrid from "@/app/components/Post/PostGrid";
-import { Reader } from "@/app/keystatic/utils";
+// import { Reader } from "@/app/keystatic/utils";
 
 import React from "react";
 
@@ -14,12 +14,14 @@ export default async function SearchPage({
 	const query = searchParams?.query?.toLowerCase() || "";
 	//const currentPage = Number(searchParams?.page) || 1;
 
-	if (query.length < 2) {
-		return null;
-	}
+	//const allPosts = await Reader.collections.posts.all();
+	//const searchPosts = allPosts.filter((post) => post.entry.title.toLowerCase().indexOf(query) > -1);
 
-	const allPosts = await Reader.collections.posts.all();
-	const searchPosts = allPosts.filter((post) => post.entry.title.toLowerCase().indexOf(query) > -1);
+	const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts/?query=${query}`, {
+		// cache: "no-cache"
+	});
+
+	const searchPosts = await response.json();
 
 	const handleSearch = () => {
 		//getPosts(searchText);

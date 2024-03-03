@@ -30,5 +30,6 @@ export const getCategoryBySlug = async (slug: string) => {
 	if (category.length > 0) {
 		return category[0];
 	}
+
 	return null;
 };

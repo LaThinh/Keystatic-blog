@@ -1,73 +1,63 @@
 import dynamic from "next/dynamic";
 
-import React, { Suspense } from "react";
 import CategoryTags from "@/app/components/Post/CategoryTags";
 import ShowcaseYoutube from "@/app/components/Post/ShowcaseYoutube";
-import Image from "next/image";
-import Loading from "@/app/components/Loading";
-import { IPostArticle } from "@/app/keystatic/interface";
 import { DocumentRenderer } from "@keystatic/core/renderer";
-import { Metadata, ResolvingMetadata } from "next";
+import Image from "next/image";
+import React, { Suspense } from "react";
+import { Reader } from "@/app/keystatic/utils";
+import { IPostArticle } from "@/app/keystatic/interface";
+import Loading from "@/app/components/Loading";
 
-const { NEXT_PUBLIC_API_URL } = process.env;
-
-type Props = {
-	params: { slug: string };
-	searchParams: { [key: string]: string | string[] | undefined };
-};
-
-export async function generateMetadata({ params, searchParams }: Props, parent: ResolvingMetadata): Promise<Metadata> {
+export default async function PostPage({ params }: { params: { slug: string } }) {
 	const slug = params.slug;
+	// const post = await Reader.collections.posts.read(slug);
 
-	// fetch data
-	const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/posts/${slug}`, {
+	// if (!post) {
+	// 	//notFound();
+	// 	return null;
+	// }
+
+	// const authors = await Promise.all(
+	// 	post.authors.map(async (authorSlug) => ({
+	// 		...(await Reader.collections.authors.read(authorSlug)),
+	// 		slug: authorSlug,
+	// 	}))
+	// );
+
+	//const postContent = await post?.content();
+
+	//let post;
+
+	const response = await fetch(`http://localhost:3000/api/posts/${slug}`, {
 		next: {
 			revalidate: 7200,
 		},
 	});
 
 	const post: IPostArticle = await response.json();
-	// optionally access and extend (rather than replace) parent metadata
-	const previousImages = (await parent).openGraph?.images || [];
 
-	return {
-		title: post?.title,
-		description: post?.title,
-		openGraph: {
-			images: [`../images${post?.heroImage}`, ...previousImages],
-		},
-	};
-}
-
-export default async function PostPage({ params, searchParams }: Props) {
-	const slug = params.slug;
-	//console.log(searchParams);
-
-	const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/posts/${slug}`, {
-		next: {
-			revalidate: 7200,
-		},
-	});
-
-	const post: IPostArticle = await response.json();
+	console.log(post);
 
 	return (
 		<div className="post-detail w-full my-10 m-auto flex flex-col gap-10 max-w-5xl @container">
-			<Suspense fallback={<Loading text="Loading Post" />}>
+			<Suspense fallback={<Loading text="Loading 22..." />}>
 				{post && (
-					<article className="post-article bg-white @xl:border @xl:rounded-2xl @xl:shadow-sm  ">
-						<h1 className="page-title text-3xl @lg:text-5xl @lg:leading-normal text-gradient !my-2 ">{post?.title}</h1>
+					<article className="post-article bg-white @2xl:border @2xl:rounded-2xl @2xl:shadow-sm  ">
+						<h1 className="page-title  @lg:leading-normal text-gradient !my-2 ">{post?.title}</h1>
 						{post?.heroImage && (
 							<div className="post-image">
 								<Image src={`${post.heroImage}`} width="1200" height="500" alt={post?.title || "Post Title"} />
 							</div>
 						)}
-						<div className="prose w-full @4xl:prose-lg @3xl:max-w-5xl p-3 @xl:p-5 @4xl:p-6">
+
+						<div className="prose w-full @4xl:prose-lg @4xl:max-w-5xl p-3 @xl:p-5 @4xl:p-6">
 							{post.categories && post.categories.length > 0 && (
 								<div className="post-categories w-full flex items-center justify-center">
 									<CategoryTags categories={post.categories} />
 								</div>
 							)}
+							{/* <pre>{JSON.stringify(authors, null, 2)}</pre> */}
 							{post?.content && (
 								<div className="post-content ">
 									<DocumentRenderer
