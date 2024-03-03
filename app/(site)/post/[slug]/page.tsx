@@ -8,6 +8,9 @@ import Loading from "@/app/components/Loading";
 import { IPostArticle } from "@/app/keystatic/interface";
 import { DocumentRenderer } from "@keystatic/core/renderer";
 import { Metadata, ResolvingMetadata } from "next";
+import { Reader } from "@/app/keystatic/utils";
+import { notFound } from "next/navigation";
+import Link from "next/link";
 
 const { NEXT_PUBLIC_API_URL } = process.env;
 
@@ -21,14 +24,15 @@ type Props = {
 export async function generateMetadata({ params, searchParams }: Props, parent: ResolvingMetadata): Promise<Metadata> {
 	const slug = params.slug;
 
-	// fetch data
-	const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/posts/${slug}`, {
-		next: {
-			revalidate: 7200,
-		},
-	});
+	// // fetch data
+	// const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/posts/${slug}`, {
+	// 	next: {
+	// 		revalidate: 7200,
+	// 	},
+	// });
 
-	const post: IPostArticle = await response.json();
+	// const post: IPostArticle = await response.json();
+	const post = await Reader.collections.posts.read(slug);
 	// optionally access and extend (rather than replace) parent metadata
 	const previousImages = (await parent).openGraph?.images || [];
 
@@ -45,13 +49,26 @@ export default async function PostPage({ params, searchParams }: Props) {
 	const slug = params.slug;
 	//console.log(searchParams);
 
-	const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/posts/${slug}`, {
-		next: {
-			revalidate: 7200,
-		},
-	});
+	// const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/posts/${slug}`, {
+	// 	next: {
+	// 		revalidate: 7200,
+	// 	},
+	// });
 
-	const post: IPostArticle = await response.json();
+	// const post: IPostArticle = await response.json();
+
+	const post = await Reader.collections.posts.read(slug);
+
+	if (!post) notFound();
+
+	const authors = await Promise.all(
+		post.authors.map(async (authorSlug) => ({
+			...(await Reader.collections.authors.read(authorSlug)),
+			slug: authorSlug,
+		}))
+	);
+
+	const postContent = await post?.content();
 
 	return (
 		<div className="post-detail w-full my-10 m-auto flex flex-col gap-10 max-w-5xl @container">
@@ -70,37 +87,37 @@ export default async function PostPage({ params, searchParams }: Props) {
 									<CategoryTags categories={post.categories} />
 								</div>
 							)}
-							{post?.content && (
+							{postContent && (
 								<div className="post-content ">
 									<DocumentRenderer
-										document={post.content}
+										document={postContent}
 										componentBlocks={{
 											"youtube-video": (props) => <ShowcaseYoutube videoId={props.youtubeVideoId} />,
 										}}
 									/>
 								</div>
 							)}
-							{/* {authors && authors.length > 0 && (
-							<div className="authors">
-								<h3>Written by</h3>
-								<ul className="author-list list-none flex gap-4">
-									{authors.map((author) => (
-										<li className="author-item" key={author.slug}>
-											<Link href={`/author/${author.slug}`} className="flex items-center gap-2">
-												<Image
-													src={author.avatar || "/images/avatar.jpg"}
-													alt={`Avatar for ${author.name}`}
-													width={80}
-													height={80}
-													className="rounded-full w-20 h-20 overflow-hidden object-cover	"
-												/>
-												<strong className="!my-2">{author?.name}</strong>
-											</Link>
-										</li>
-									))}
-								</ul>
-							</div>
-						)} */}
+							{authors && authors.length > 0 && (
+								<div className="authors">
+									<h3>Written by</h3>
+									<ul className="author-list list-none flex gap-4">
+										{authors.map((author) => (
+											<li className="author-item" key={author.slug}>
+												<Link href={`/author/${author.slug}`} className="flex items-center gap-2">
+													<Image
+														src={author.avatar || "/images/avatar.jpg"}
+														alt={`Avatar for ${author.name}`}
+														width={80}
+														height={80}
+														className="rounded-full w-20 h-20 overflow-hidden object-cover	"
+													/>
+													<strong className="!my-2">{author?.name}</strong>
+												</Link>
+											</li>
+										))}
+									</ul>
+								</div>
+							)}
 						</div>
 					</article>
 				)}
