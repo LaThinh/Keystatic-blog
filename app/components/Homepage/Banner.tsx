@@ -21,7 +21,6 @@ export default function Banner({ props }: { props: any }) {
 
 	return (
 		<div className="slider-container w-full  m-auto relative">
-			Banner
 			<Slider {...settings} className="flex flex-col">
 				{props.map((item: any, index: number) => (
 					<div className="banner-item flex flex-col relative" key={index}>

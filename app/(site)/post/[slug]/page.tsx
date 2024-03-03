@@ -12,7 +12,7 @@ import { Reader } from "@/app/keystatic/utils";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 
-const { NEXT_PUBLIC_API_URL } = process.env;
+// const { NEXT_PUBLIC_API_URL } = process.env;
 
 // const NoSSR = dynamic(() => import('../components/no-ssr'), { ssr: false })
 
@@ -45,7 +45,7 @@ export async function generateMetadata({ params, searchParams }: Props, parent: 
 	};
 }
 
-export default async function PostPage({ params, searchParams }: Props) {
+export default async function PostPage({ params }: { params: { slug: string } }) {
 	const slug = params.slug;
 	//console.log(searchParams);
 
@@ -124,4 +124,10 @@ export default async function PostPage({ params, searchParams }: Props) {
 			</Suspense>
 		</div>
 	);
+}
+
+export async function generateStaticParams() {
+	const postSlugs = await Reader.collections.posts.list();
+
+	return postSlugs.map((postSlug) => ({ slug: postSlug }));
 }
