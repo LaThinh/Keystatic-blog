@@ -4,7 +4,6 @@ const nextConfig = {
         unoptimized: true
     },
     typescript: { ignoreBuildErrors: true },
-
     experimental: {
         missingSuspenseWithCSRBailout: false,
     },

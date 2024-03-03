@@ -11,6 +11,8 @@ import { Metadata, ResolvingMetadata } from "next";
 
 const { NEXT_PUBLIC_API_URL } = process.env;
 
+// const NoSSR = dynamic(() => import('../components/no-ssr'), { ssr: false })
+
 type Props = {
 	params: { slug: string };
 	searchParams: { [key: string]: string | string[] | undefined };
