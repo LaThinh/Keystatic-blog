@@ -46,13 +46,13 @@ body {
 	@apply bg-gradient-to-tr from-blue-500 to-sky-300 bg-clip-text text-transparent;
 }
 
-.page-title {
-	@apply capitalize text-2xl md:text-3xl lg:text-4xl font-bold mx-auto text-center;
-}
-
 .text-gradient {
 	@apply animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 
   bg-clip-text text-transparent;
+}
+
+.page-title {
+	@apply capitalize py-5 text-2xl md:text-3xl lg:text-4xl font-bold mx-auto text-center text-gradient;
 }
 
 .post-detail a {

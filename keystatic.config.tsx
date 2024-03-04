@@ -268,26 +268,22 @@ export default config({
 					}
 				),
 
-				about: fields.object({
-					title: fields.text({ label: "About Title" }),
-					intro: fields.text({ label: "About Intro" }),
+				latestPost: fields.number({
+					label: "Number of latest posts",
+					description: "Number of latest articles on the home page",
+					step: 1,
+					defaultValue: 6,
+					validation: {
+						min: 3,
+						max: 24,
+						step: true,
+					},
 				}),
 
-				intro: fields.blocks(
-					{
-						title: {
-							label: "Intro Title",
-							schema: fields.text({ label: "About Title" }),
-						},
-						intro: {
-							label: "About Intro",
-							schema: fields.text({ label: "About Intro" }),
-						},
-					},
-					{
-						label: "About Intro",
-					}
-				),
+				about: fields.object({
+					title: fields.text({ label: "About Title" }),
+					intro: fields.text({ label: "About Intro", multiline: true }),
+				}),
 			},
 		}),
 	},

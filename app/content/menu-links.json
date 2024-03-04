@@ -9,6 +9,10 @@
       "url": "/post"
     },
     {
+      "menu": "Categories",
+      "url": "/category"
+    },
+    {
       "menu": "Authors",
       "url": "/author"
     }

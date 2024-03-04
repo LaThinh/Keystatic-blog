@@ -1,16 +1,16 @@
 import React from "react";
 import Link from "next/link";
-import { ICategory } from "@/app/keystatic/interface";
+// import { ICategory } from "@/app/keystatic/interface";
+import { Reader } from "@/app/keystatic/utils";
 
 export default async function Categories() {
-	const { NEXT_PUBLIC_API_URL } = process.env;
-	const res = await fetch(`${NEXT_PUBLIC_API_URL}/api/posts/category`, {
-		next: {
-			revalidate: 120,
-		},
-	});
+	const categories = await Reader.collections.categories.all();
+	const allPosts = await Reader.collections.posts.all();
 
-	const categories: ICategory[] = await res.json();
+	const getPosts = (slug: string) => {
+		const posts = allPosts.filter((post) => post.entry.categories.includes(slug));
+		return posts.length;
+	};
 
 	return (
 		<div className="block">
@@ -20,7 +20,7 @@ export default async function Categories() {
 					<div key={index} className={`category py-2 ${index > 0 ? "border-t" : ""}`}>
 						<Link href={`/post/category/${category.slug}`}>{category.entry.category}</Link>
 						<span className="count ml-2" style={{ color: category.entry.customColor }}>
-							{`(${category?.total})`}
+							({getPosts(category.slug)})
 						</span>
 					</div>
 				))}
