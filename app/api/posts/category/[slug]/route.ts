@@ -1,7 +1,7 @@
 import { Reader } from "@/app/keystatic/utils";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(request: NextRequest, context: any): Promise<NextResponse> {
+export async function GET(request: NextRequest, context: any) {
 	const { params } = context;
 	const slug = params.slug;
 
