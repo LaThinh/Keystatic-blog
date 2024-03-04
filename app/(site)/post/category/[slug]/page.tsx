@@ -26,8 +26,8 @@ export default async function CategoryPage({ params }: { params: { slug: string 
 	);
 }
 
-// export async function generateStaticParams() {
-// 	const slugs = await Reader.collections.categories.list();
+export async function generateStaticParams() {
+	const slugs = await Reader.collections.categories.list();
 
-// 	return slugs.map((slug) => ({ slug: slug }));
-// }
+	return slugs.map((slug) => ({ slug: slug }));
+}

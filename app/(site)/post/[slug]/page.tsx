@@ -126,8 +126,8 @@ export default async function PostPage({ params }: { params: { slug: string } })
 	);
 }
 
-// export async function generateStaticParams() {
-// 	const postSlugs = await Reader.collections.posts.list();
+export async function generateStaticParams() {
+	const postSlugs = await Reader.collections.posts.list();
 
-// 	return postSlugs.map((postSlug) => ({ slug: postSlug }));
-// }
+	return postSlugs.map((postSlug) => ({ slug: postSlug }));
+}
