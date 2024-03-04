@@ -13,6 +13,13 @@ const config: Config = {
 				"gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
 			},
 
+			fontFamily: {
+				lobster: ["var(--lobster)"],
+				great_vibes: ["var(--great_vibes)", "cursive"],
+				heading: ["var(--heading_font)"],
+				script: ["var(--style_script)"],
+			},
+
 			animation: {
 				text: "text 5s ease infinite",
 			},

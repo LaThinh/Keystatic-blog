@@ -18,7 +18,7 @@ export default async function PostGrid({ posts, size }: { posts?: IPost[]; size?
 			textSize = "text-sm";
 			break;
 		case "lg":
-			gridClass = "@xl:grid-cols-2 @xl:gap-5 @3xl:gap-8 @5xl:grid-cols-3 @5xl:gap-8 @7xl:grid-cols-4";
+			gridClass = "@3xl:grid-cols-2 @xl:gap-5 @3xl:gap-8 @5xl:grid-cols-3 @5xl:gap-8 @7xl:grid-cols-4";
 			textSize = "xl:text-xl";
 			break;
 	}

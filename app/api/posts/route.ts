@@ -30,7 +30,14 @@ export async function GET(request: NextRequest) {
 			posts = posts.slice(from, to);
 		}
 
-		return NextResponse.json(posts);
+		const data = posts.map((post, index) => {
+			return {
+				...post,
+				index: index + 1,
+			};
+		});
+
+		return NextResponse.json(data);
 	} catch (error: any) {
 		console.log(error.message);
 		return NextResponse.json({ error: `An error occurred: ${error.message}` }, { status: 200 });

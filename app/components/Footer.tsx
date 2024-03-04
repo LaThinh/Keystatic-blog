@@ -9,7 +9,7 @@ export default async function Footer() {
 				<div className="footer-content flex justify-between flex-wrap">
 					<div className="footer-logo w-full m-auto py-5 max-w-[400px]">
 						<div className="flex flex-col h-full gap-4 justify-center content-center text-center md:text-left">
-							<h2 className="text-3xl text-gradient font-semibold">La Keystatic</h2>
+							<h3 className="text-3xl text-gradient font-script">La Keystatic Blog</h3>
 							<p className="copyright text-gray-500">
 								© Copyright ©2024 by La Thinh. <br /> All rights reserved.
 							</p>

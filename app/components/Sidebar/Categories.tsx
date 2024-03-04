@@ -15,7 +15,7 @@ export default async function Categories() {
 	return (
 		<div className="block">
 			<h3 className="block-title">Categories</h3>
-			<div className="block-content pb-5">
+			<div className="block-content pb-2">
 				{categories.map((category, index) => (
 					<div key={index} className={`category py-2 ${index > 0 ? "border-t" : ""}`}>
 						<Link href={`/post/category/${category.slug}`}>{category.entry.category}</Link>

@@ -39,7 +39,7 @@ export default async function HomePage() {
 		<div className="homepage">
 			{homePage?.banner && homePage.banner.length > 0 && <Banner props={homePage.banner} />}
 			<div className="container py-10">
-				<h2 className="text-xl lg:text-3xl font-semibold my-10">Latest {lastNumber} Posts</h2>
+				<h2 className="text-xl lg:text-3xl my-10">Latest {lastNumber} Posts</h2>
 				<PostGrid posts={latestPost} />
 				{/* <LatestPost /> */}
 			</div>

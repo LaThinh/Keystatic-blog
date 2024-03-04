@@ -18,6 +18,7 @@ export default function Banner({ props }: { props: any }) {
 		speed: 2000,
 		slidesToShow: 1,
 		slidesToScroll: 1,
+		adaptiveHeight: false,
 	};
 
 	return (
@@ -39,8 +40,8 @@ export default function Banner({ props }: { props: any }) {
                                 md:absolute md:left-[4%] md:top-[50%] md:translate-y-[-50%] md:z-10 md:w-[92%] md:max-w-[800px] 
                                 md:rounded-xl text-white bg-slate-600/70"
 						>
-							<h2 className="banner-title font-bold text-3xl lg:text-5xl lg:leading-normal">{item?.title}</h2>
-							<p className="banner-desc leading-relaxed">{item?.description}</p>
+							<h2 className="banner-title text-3xl lg:text-5xl lg:leading-normal">{item?.title}</h2>
+							<p className="banner-desc min-h-32 leading-relaxed lg:text-lg line-clamp-5">{item?.description}</p>
 							{item?.link && (
 								<Link className="px-10 py-2 rounded-md bg-sky-500 hover:bg-sky-600 !text-white" href={item.link}>
 									{"View more"}

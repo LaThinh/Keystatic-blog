@@ -30,8 +30,8 @@ export default function PostCard({ post, size }: { post: IPost; size?: "sm" | "m
 			>
 				{post.entry?.heroImage ? (
 					<Image
-						width={540}
-						height={30}
+						width={800}
+						height={400}
 						src={post.entry?.heroImage}
 						alt={post.entry?.title}
 						className="post-img !my-0 object-cover aspect-[3.6/2] hover:scale-110 "
@@ -42,18 +42,21 @@ export default function PostCard({ post, size }: { post: IPost; size?: "sm" | "m
 					</div>
 				)}
 			</Link>
-			<div className="post-info p-4 @lg:px-8 flex flex-wrap justify-between gap-3">
+			<div className="post-info p-4 @lg:px-6 flex flex-wrap justify-between items-baseline gap-3">
 				{post.entry.categories && post.entry.categories.length > 0 && (
 					<CategoryTags categories={post.entry.categories} />
 				)}
 
-				{post.entry.publishDate && <div className="post-entry-date text-gray-500 italic">{post.entry.publishDate}</div>}
+				{post.entry.publishDate && (
+					<div className="post-entry-date text-gray-700 text-md">{post.entry.publishDate}</div>
+				)}
 
 				<Link
-					className={`post-title w-full capitalize text-gray-700 hover:text-sky-500 font-semibold text-xl`}
+					className={`post-title w-full capitalize line-clamp-2 text-gray-700 hover:text-sky-500 
+					text-xl @lg:text-2xl`}
 					href={`/post/${post.slug}`}
 				>
-					{post.entry.title}
+					<h3>{post.entry.title}</h3>
 				</Link>
 			</div>
 		</div>

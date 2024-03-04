@@ -75,7 +75,13 @@ export default async function PostPage({ params }: { params: { slug: string } })
 		<div className="post-detail w-full my-10 m-auto flex flex-col gap-10 max-w-5xl @container">
 			<Suspense fallback={<Loading text="Loading Post" />}>
 				<article className="post-article bg-white @xl:border @xl:rounded-2xl @xl:shadow-sm  ">
-					<h1 className="page-title text-3xl @lg:text-5xl @lg:leading-normal text-gradient !my-2 ">{post?.title}</h1>
+					<h1
+						className="page-title text-3xl text-gradient !my-0 px-5
+					@lg:text-4xl @lg:leading-normal
+					@2xl:text-5xl @2xl:leading-relaxed"
+					>
+						{post?.title}
+					</h1>
 					{post?.heroImage && (
 						<div className="post-image">
 							<Image src={`${post.heroImage}`} width="1200" height="500" alt={post?.title || "Post Title"} />
@@ -99,8 +105,8 @@ export default async function PostPage({ params }: { params: { slug: string } })
 						)}
 
 						{authors && authors.length > 0 && (
-							<div className="authors">
-								<h3>Written by</h3>
+							<div className="authors border-t mt-10 pt-5">
+								<h3 className="!m-5 font-script text-2xl">Written by</h3>
 								<ul className="author-list list-none flex gap-4">
 									{authors.map((author) => (
 										<li className="author-item" key={author.slug}>
@@ -108,9 +114,9 @@ export default async function PostPage({ params }: { params: { slug: string } })
 												<Image
 													src={author.avatar || "/images/avatar.jpg"}
 													alt={`Avatar for ${author.name}`}
-													width={80}
-													height={80}
-													className="rounded-full w-20 h-20 overflow-hidden object-cover	"
+													width={64}
+													height={64}
+													className="!m-0 rounded-full overflow-hidden object-cover	"
 												/>
 												<strong className="!my-2">{author?.name}</strong>
 											</Link>
