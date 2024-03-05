@@ -2,7 +2,9 @@ import { Reader, sortPostsByPublishDate } from "@/app/keystatic/utils";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {
-	const { searchParams } = new URL(request.url);
+	//const { searchParams } = new URL(request.url);
+
+	const searchParams = request.nextUrl.searchParams;
 	const categorySlug = searchParams.get("categorySlug");
 	const query = searchParams.get("query");
 	const page = searchParams.get("page") || "1";

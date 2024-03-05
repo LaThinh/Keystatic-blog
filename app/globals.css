@@ -99,3 +99,14 @@ h6 {
 .footer-col a {
 	@apply text-gray-600 hover:text-gray-800;
 }
+
+.post-card .post-content {
+	opacity: 1;
+	/* transform: scale(1); */
+	transition: all 0.5s ease-in-out;
+}
+
+.post-card.out-of-screen .post-content {
+	opacity: 0.8;
+	transform: scale(0.9);
+}

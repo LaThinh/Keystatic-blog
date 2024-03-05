@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { Noto_Sans, Agbalumo, Lobster, Great_Vibes, Style_Script } from "next/font/google";
+import { Inter_Tight, Anton, Lobster, Great_Vibes, Style_Script, Calistoga } from "next/font/google";
 import "./globals.css";
 
-// const inter = Inter({ subsets: ["latin"] });
+const inter = Inter_Tight({ subsets: ["latin"] });
 
-const noto = Noto_Sans({
-	weight: ["300", "400", "600", "700"],
-	subsets: ["latin"],
-	variable: "--noto-sans",
-});
+// const noto = Noto_Sans({
+// 	weight: ["300", "400", "600", "700"],
+// 	subsets: ["latin"],
+// 	variable: "--noto-sans",
+// });
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -33,7 +33,7 @@ const style_script = Style_Script({
 	variable: "--style_script",
 });
 
-const heading_font = Agbalumo({
+const heading_font = Calistoga({
 	weight: ["400"],
 	subsets: ["latin"],
 	variable: "--heading_font",
@@ -47,8 +47,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body
-				className={`${noto.className} 
-			${heading_font.variable} ${lobster.variable} 
+				className={`${inter.className} ${heading_font.variable} ${lobster.variable} 
 			${great_vibes.variable} ${style_script.variable}  
 			`}
 			>

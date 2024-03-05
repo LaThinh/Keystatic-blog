@@ -4,6 +4,7 @@ import React from "react";
 import Banner from "@/app/components/Homepage/Banner";
 import PostGrid from "@/app/components/Post/PostGrid";
 import { Reader, sortPostsByPublishDate } from "@/app/keystatic/utils";
+// import ScriptClient from "../components/ScriptClient";
 // import LatestPost from "../components/Homepage/LatestPost";
 
 // const LatestPost = dynamic(() => import("@/app/components/Homepage/LatestPost"), {

@@ -1,10 +1,13 @@
+import dynamic from "next/dynamic";
+
 import React from "react";
 import { Reader, sortPostsByPublishDate } from "@/app/keystatic/utils";
 import { IPost } from "@/app/keystatic/interface";
 import PostCard from "./PostCard";
+const ScriptClient = dynamic(() => import("@/app/components/ScriptClient"), { ssr: false });
 
 export default async function PostGrid({ posts, size }: { posts?: IPost[]; size?: "sm" | "md" | "lg" }) {
-	let gridClass = "@xl:grid-cols-2 @xl:gap-5 @4xl:grid-cols-3 @4xl:gap-8";
+	let gridClass = "@2xl:grid-cols-2 @xl:gap-6 @4xl:grid-cols-3 @4xl:gap-8";
 	let textSize = "text-md";
 	if (!posts) {
 		posts = await Reader.collections.posts.all();
@@ -25,11 +28,12 @@ export default async function PostGrid({ posts, size }: { posts?: IPost[]; size?
 
 	return (
 		<div className="post-grid @container">
-			<div className={`post-list grid gap-3 ${gridClass}`}>
+			<div className={`post-list grid gap-5 ${gridClass}`}>
 				{posts.map((post) => (
 					<PostCard post={post} key={post.slug} />
 				))}
 			</div>
+			<ScriptClient />
 		</div>
 	);
 }

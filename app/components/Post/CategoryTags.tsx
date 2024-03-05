@@ -25,7 +25,7 @@ export const CategoryTag = ({ category }: { category: ICategory | null }) => {
 	return (
 		<Link
 			href={`/post/category/${category.slug}`}
-			className={`category-link p-3 py-1 rounded-sm uppercase text-sm !text-white ${bgColor} ${
+			className={`category-link line-clamp-1 p-3 py-1 rounded-sm whitespace-nowrap uppercase text-sm !text-white ${bgColor} ${
 				category.entry.customColor ? "hover:opacity-80" : ""
 			}`}
 			style={{ background: category.entry.customColor }}
@@ -38,7 +38,7 @@ export const CategoryTag = ({ category }: { category: ICategory | null }) => {
 export default function CategoryTags({ categories }: { categories: readonly string[] }) {
 	return (
 		<div className="max-w-[calc(100%-120px)]">
-			<div className="post-categories flex flex-wrap gap-2">
+			<div className="post-categories flex gap-2 overflow-hidden">
 				{categories.map((category, index) => (
 					<div className="post-category" key={index}>
 						{getCategoryBySlug(category).then((cate) => (
