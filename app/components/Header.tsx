@@ -17,7 +17,7 @@ export default async function Header() {
 					</Link>
 				</div>
 				{menuLink?.items && menuLink.items.length > 0 && (
-					<ul className="nav menu hidden lg:flex list-none gap-6 text-2xl font-heading">
+					<ul className="nav menu hidden md:flex list-none gap-6 text-xl font-heading">
 						{menuLink.items.map((item, index) => (
 							<li key={index}>
 								<Link className="menu-item text-gray-700 hover:text-sky-600 " href={item?.url || "/"}>
@@ -28,7 +28,9 @@ export default async function Header() {
 					</ul>
 				)}
 				<div className="account">
-					<Link href={`/keystatic`}>Admin</Link>
+					<Link className="text-gray-700 font-script" href={`/keystatic`}>
+						Login
+					</Link>
 				</div>
 			</div>
 		</header>
