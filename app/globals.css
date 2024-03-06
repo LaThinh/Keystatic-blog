@@ -72,11 +72,11 @@ h6 {
 }
 
 .sidebar .block {
-	@apply rounded-lg border  overflow-hidden;
+	@apply rounded-lg border bg-white overflow-hidden;
 }
 
 .sidebar .block .block-title {
-	@apply px-5 py-2 border-b text-lg bg-gradient-to-r from-gray-50 to-gray-100;
+	@apply px-5 py-2 border-b text-gray-700 text-lg bg-gradient-to-r from-gray-50 to-gray-100;
 }
 
 .sidebar .block .block-content {
@@ -108,5 +108,5 @@ h6 {
 
 .post-card.out-of-screen .post-content {
 	opacity: 0.8;
-	transform: scale(0.9);
+	transform: scale(0.95);
 }

@@ -14,6 +14,7 @@ const config: Config = {
 			},
 
 			fontFamily: {
+				inter: ["var(--inter)"],
 				lobster: ["var(--lobster)"],
 				great_vibes: ["var(--great_vibes)", "cursive"],
 				heading: ["var(--heading_font)"],

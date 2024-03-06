@@ -38,7 +38,7 @@ export const CategoryTag = ({ category }: { category: ICategory | null }) => {
 export default function CategoryTags({ categories }: { categories: readonly string[] }) {
 	return (
 		<div className="max-w-[calc(100%-120px)]">
-			<div className="post-categories flex gap-2 overflow-hidden">
+			<div className="post-categories flex gap-2 flex-wrap h-8 overflow-hidden">
 				{categories.map((category, index) => (
 					<div className="post-category" key={index}>
 						{getCategoryBySlug(category).then((cate) => (

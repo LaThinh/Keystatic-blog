@@ -10,7 +10,7 @@ export default async function RecentPost({ postNumber }: { postNumber: number })
 	return (
 		<div className="block">
 			<h3 className="block-title">Recent Posts</h3>
-			<div className="block-content py-4 !px-2">
+			<div className="block-content !p-2">
 				<div className="post-list flex flex-col gap-3">
 					{recentPost.map((post) => (
 						<div key={post.slug} className="post-item flex gap-2 bg-slate-50">

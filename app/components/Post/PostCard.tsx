@@ -21,7 +21,7 @@ export default function PostCard({ post, size }: { post: IPost; size?: "sm" | "m
 
 	return (
 		<div key={post.slug} className="post-card" id={post.slug}>
-			<div className="post-content @container flex flex-col border rounded-xl overflow-hidden shadow-lg bg-white">
+			<div className="post-content @container flex flex-col border rounded-xl overflow-hidden hover:shadow-lg bg-white">
 				<Link
 					href={`/post/${post.slug}`}
 					className="post-image aspect-[3.6/2] block bg-gray-200 overflow-hidden hover:bg-gray-300"
@@ -51,7 +51,7 @@ export default function PostCard({ post, size }: { post: IPost; size?: "sm" | "m
 
 					<Link
 						href={`/post/${post.slug}`}
-						className={`post-title w-full capitalize line-clamp-2 
+						className={`post-title w-full capitalize line-clamp-2 h-16
 						text-gray-700 hover:text-sky-500 text-xl @lg:text-2xl`}
 					>
 						<h3>{post.entry.title}</h3>

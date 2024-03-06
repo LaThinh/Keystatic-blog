@@ -187,6 +187,10 @@ export default config({
 					directory: "public/images/avatars",
 					publicPath: "/images/avatars",
 				}),
+				introduce: fields.text({
+					label: "Introduce yourself",
+					multiline: true,
+				}),
 				showcase: fields.blocks(
 					{
 						link: {

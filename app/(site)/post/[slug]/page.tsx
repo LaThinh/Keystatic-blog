@@ -72,7 +72,7 @@ export default async function PostPage({ params }: { params: { slug: string } })
 	const postContent = await post?.content();
 
 	return (
-		<div className="post-detail w-full my-10 m-auto flex flex-col gap-10 max-w-5xl @container">
+		<div className="post-detail w-full my-10 m-auto flex flex-col gap-10  @container">
 			<Suspense fallback={<Loading text="Loading Post" />}>
 				<article className="post-article bg-white @xl:border @xl:rounded-2xl @xl:shadow-sm  ">
 					<h1
@@ -87,12 +87,14 @@ export default async function PostPage({ params }: { params: { slug: string } })
 							<Image src={`${post.heroImage}`} width="1200" height="500" alt={post?.title || "Post Title"} />
 						</div>
 					)}
-					<div className="prose w-full @4xl:prose-lg @3xl:max-w-5xl p-3 @xl:p-5 @4xl:p-6">
-						{post?.categories && post.categories.length > 0 && (
-							<div className="post-categories w-full flex items-center justify-center">
-								<CategoryTags categories={post.categories} />
-							</div>
-						)}
+
+					{post?.categories && post.categories.length > 0 && (
+						<div className="post-categories mt-5 w-full flex items-center justify-center">
+							<CategoryTags categories={post.categories} />
+						</div>
+					)}
+
+					<div className="prose w-full @4xl:prose-lg @3xl:max-w-5xl p-3 max-w-4xl @xl:p-5 @4xl:p-6">
 						{postContent && (
 							<div className="post-content ">
 								<DocumentRenderer
@@ -116,7 +118,7 @@ export default async function PostPage({ params }: { params: { slug: string } })
 													alt={`Avatar for ${author.name}`}
 													width={64}
 													height={64}
-													className="!m-0 rounded-full overflow-hidden object-cover	"
+													className="!m-0 rounded-full aspect-square object-cover"
 												/>
 												<strong className="!my-2">{author?.name}</strong>
 											</Link>

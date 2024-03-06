@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Inter_Tight, Anton, Lobster, Great_Vibes, Style_Script, Calistoga } from "next/font/google";
 import "./globals.css";
+import { Suspense } from "react";
+import Loading from "./components/Loading";
 
-const inter = Inter_Tight({ subsets: ["latin"] });
+const inter = Inter_Tight({ subsets: ["latin"], variable: "--inter" });
 
 // const noto = Noto_Sans({
 // 	weight: ["300", "400", "600", "700"],
@@ -39,6 +41,8 @@ const heading_font = Calistoga({
 	variable: "--heading_font",
 });
 
+const fontVariables = `${heading_font.variable} ${lobster.variable} ${great_vibes.variable} ${style_script.variable}`;
+
 export default function RootLayout({
 	children,
 }: Readonly<{
@@ -46,12 +50,8 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body
-				className={`${inter.className} ${heading_font.variable} ${lobster.variable} 
-			${great_vibes.variable} ${style_script.variable}  
-			`}
-			>
-				{children}
+			<body className={`${inter.className} ${fontVariables} `}>
+				<Suspense fallback={<Loading text="Loading..." />}>{children}</Suspense>
 			</body>
 		</html>
 	);

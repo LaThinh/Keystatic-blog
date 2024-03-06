@@ -14,7 +14,7 @@ export default function PostLayout({ children }: { children: React.ReactNode }) 
 	return (
 		<div className="post-layout flex flex-col min-h-[100vh] justify-between">
 			<Header />
-			<div className="main-container h-full flex flex-col flex-1">
+			<div className="main-container h-full flex flex-col flex-1 bg-gradient-to-br from-slate-50 to-slate-100">
 				<Suspense fallback={<Loading text="Loading..." />}>{children}</Suspense>
 			</div>
 			<Footer />

@@ -1,3 +1,5 @@
 {
-  "category": "Web Developer"
+  "category": "Web Developer",
+  "description": "Blog Lập trình viên là chuyên mục dành cho những ai đam mê lập trình và muốn nâng cao kỹ năng của mình. \nTại đây, bạn sẽ tìm thấy các bài viết về nhiều chủ đề khác nhau. \nNâng cao kiến thức và kỹ năng lập trình của mình.\nCập nhật những công nghệ mới nhất trong ngành lập trình.\nTìm kiếm cơ hội nghề nghiệp phù hợp.\nGiao lưu, học hỏi và chia sẻ kinh nghiệm với những người có cùng đam mê lập trình.",
+  "customColor": "#800088"
 }

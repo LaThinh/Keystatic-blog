@@ -10,8 +10,8 @@ const observer = new IntersectionObserver(
 		});
 	},
 	{
-		threshold: 0.5,
-		rootMargin: "100px 0px -30px 0px",
+		//threshold: 0.5,
+		rootMargin: "200px 0px -100px 0px",
 	}
 );
 
@@ -24,5 +24,5 @@ export default function ScriptClient() {
 			});
 		}, 1000);
 	}
-	return <div></div>;
+	return <></>;
 }
