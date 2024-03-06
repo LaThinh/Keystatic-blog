@@ -10,7 +10,7 @@
     },
     {
       "menu": "Categories",
-      "url": "/category"
+      "url": "/post/category"
     },
     {
       "menu": "Authors",
