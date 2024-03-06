@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter_Tight, Anton, Lobster, Great_Vibes, Style_Script, Calistoga } from "next/font/google";
+import { Inter_Tight, Anton, Lobster, Great_Vibes, Style_Script, Calistoga, Rowdies } from "next/font/google";
 import "./globals.css";
 import { Suspense } from "react";
 import Loading from "./components/Loading";
@@ -35,7 +35,7 @@ const style_script = Style_Script({
 	variable: "--style_script",
 });
 
-const heading_font = Calistoga({
+const heading_font = Rowdies({
 	weight: ["400"],
 	subsets: ["latin"],
 	variable: "--heading_font",

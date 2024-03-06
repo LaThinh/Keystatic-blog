@@ -7,7 +7,15 @@ import Link from "next/link";
 import React from "react";
 import CategoryTags from "@/app/components/Post/CategoryTags";
 
-export default function PostCard({ post, size }: { post: IPost; size?: "sm" | "md" | "lg" }) {
+export default function PostCard({
+	post,
+	categories,
+	size,
+}: {
+	post: IPost;
+	categories?: ICategory[];
+	size?: "sm" | "md" | "lg";
+}) {
 	let textSize = "text-md";
 
 	switch (size) {
@@ -41,8 +49,8 @@ export default function PostCard({ post, size }: { post: IPost; size?: "sm" | "m
 					)}
 				</Link>
 				<div className="post-info p-4 @lg:px-6 flex flex-wrap justify-between items-baseline gap-3">
-					{post.entry.categories && post.entry.categories.length > 0 && (
-						<CategoryTags categories={post.entry.categories} />
+					{categories && post.entry.categories && post.entry.categories.length > 0 && (
+						<CategoryTags categories={post.entry.categories} allCategory={categories} />
 					)}
 
 					{post.entry.publishDate && (

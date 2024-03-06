@@ -5,13 +5,12 @@ import CategoryTags from "@/app/components/Post/CategoryTags";
 import ShowcaseYoutube from "@/app/components/Post/ShowcaseYoutube";
 import Image from "next/image";
 import Loading from "@/app/components/Loading";
-import { IPostArticle } from "@/app/keystatic/interface";
+
 import { DocumentRenderer } from "@keystatic/core/renderer";
 import { Metadata, ResolvingMetadata } from "next";
 import { Reader } from "@/app/keystatic/utils";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import PostArticle from "@/app/components/Post/PostArticle";
 
 // const { NEXT_PUBLIC_API_URL } = process.env;
 
@@ -24,14 +23,6 @@ type Props = {
 
 export async function generateMetadata({ params, searchParams }: Props, parent: ResolvingMetadata): Promise<Metadata> {
 	const slug = params.slug;
-
-	// // fetch data
-	// const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/posts/${slug}`, {
-	// 	next: {
-	// 		revalidate: 7200,
-	// 	},
-	// });
-
 	// const post: IPostArticle = await response.json();
 	const post = await Reader.collections.posts.read(slug);
 	// optionally access and extend (rather than replace) parent metadata
@@ -41,7 +32,7 @@ export async function generateMetadata({ params, searchParams }: Props, parent: 
 		title: post?.title,
 		description: post?.title,
 		openGraph: {
-			images: [`../images${post?.heroImage}`, ...previousImages],
+			images: [`../${post?.heroImage}`, ...previousImages],
 		},
 	};
 }
@@ -59,6 +50,7 @@ export default async function PostPage({ params }: { params: { slug: string } })
 	//const post: IPostArticle = await response.json();
 
 	const post = await Reader.collections.posts.read(slug);
+	const categories = await Reader.collections.categories.all();
 
 	if (!post) notFound();
 
@@ -84,13 +76,19 @@ export default async function PostPage({ params }: { params: { slug: string } })
 					</h1>
 					{post?.heroImage && (
 						<div className="post-image">
-							<Image src={`${post.heroImage}`} width="1200" height="500" alt={post?.title || "Post Title"} />
+							<Image
+								src={`${post.heroImage}`}
+								width="900"
+								height="500"
+								alt={post?.title || "Post Title"}
+								className="w-full"
+							/>
 						</div>
 					)}
 
 					{post?.categories && post.categories.length > 0 && (
 						<div className="post-categories mt-5 w-full flex items-center justify-center">
-							<CategoryTags categories={post.categories} />
+							<CategoryTags categories={post.categories} allCategory={categories} />
 						</div>
 					)}
 

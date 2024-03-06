@@ -12,8 +12,6 @@ export default function Search() {
 	const searchParams = useSearchParams();
 	const query = searchParams.get("query") || "";
 
-	console.log(query);
-
 	// const getPosts = (slug: string) => {
 	// 	//const posts = allPosts.filter((post) => post.entry.categories.includes(slug));
 	// 	const posts = allPosts.filter((post) => post.entry.content.toString().includes(query));
@@ -44,6 +42,12 @@ export default function Search() {
 		//router.push(`/post/search?query=${searchText}`);
 	};
 
+	const handleEnterPress = (event: any) => {
+		if (event.key === "Enter") {
+			router.push(`/post/search?query=${searchText}`);
+		}
+	};
+
 	return (
 		<div className="block">
 			<h3 className="block-title">Search</h3>
@@ -54,6 +58,7 @@ export default function Search() {
 						placeholder="Nhập từ khóa tìm kiếm..."
 						value={searchText}
 						onChange={(event) => setSearchText(event.target.value)}
+						onKeyDown={handleEnterPress}
 						className="px-3 py-2 border rounded-md w-full flex flex-1"
 					/>
 

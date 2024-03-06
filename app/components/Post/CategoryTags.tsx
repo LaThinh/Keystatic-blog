@@ -1,7 +1,17 @@
+"use client";
+
 import { ICategory } from "@/app/keystatic/interface";
-import { getCategoryBySlug } from "@/app/keystatic/utils";
 import Link from "next/link";
 import React from "react";
+
+export const getCategoryBySlug = (slug: string, categories: ICategory[]) => {
+	const category: ICategory[] = categories.filter((c: any) => c.slug === slug);
+	if (category.length > 0) {
+		return category[0];
+	}
+
+	return null;
+};
 
 export const CategoryTag = ({ category }: { category: ICategory | null }) => {
 	if (!category) return null;
@@ -35,17 +45,29 @@ export const CategoryTag = ({ category }: { category: ICategory | null }) => {
 	);
 };
 
-export default function CategoryTags({ categories }: { categories: readonly string[] }) {
+export default function CategoryTags({
+	categories,
+	allCategory,
+}: {
+	categories: readonly string[];
+	allCategory: ICategory[];
+}) {
 	return (
 		<div className="max-w-[calc(100%-120px)]">
 			<div className="post-categories flex gap-2 flex-wrap h-8 overflow-hidden">
-				{categories.map((category, index) => (
-					<div className="post-category" key={index}>
-						{getCategoryBySlug(category).then((cate) => (
-							<CategoryTag key={index} category={cate} />
-						))}
-					</div>
-				))}
+				{categories.map((category, index) => {
+					const cate = getCategoryBySlug(category, allCategory);
+
+					return (
+						<div className="post-category" key={index}>
+							<CategoryTag category={cate} />
+							{/* {getCategoryBySlug(category).then((cate) => (
+							<CategoryTag key={index} category={cate} allCategory={allCategory} />
+						))} */}
+							{category}
+						</div>
+					);
+				})}
 			</div>
 		</div>
 	);

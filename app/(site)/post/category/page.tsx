@@ -43,7 +43,7 @@ export default async function CategoryPage() {
 						>
 							<div>
 								<h3 className="cate-name text-2xl">{category.entry.category}</h3>
-								{/* <p className="cate-desc">{category.entry.description}</p> */}
+								{/* <p className="cate-desc2">{category.entry.description}</p> */}
 							</div>
 
 							<div className="cate-total flex gap-1 items-end">

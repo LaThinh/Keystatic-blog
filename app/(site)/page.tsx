@@ -19,6 +19,7 @@ export default async function HomePage() {
 	posts = posts.filter((post) => !post.entry.draft);
 	posts = sortPostsByPublishDate(posts);
 	const latestPost = posts.slice(0, lastNumber);
+	const categories = await Reader.collections.categories.all();
 
 	// const lastUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/posts/?limit=6`;
 	// console.log(lastUrl);
@@ -41,7 +42,7 @@ export default async function HomePage() {
 			{homePage?.banner && homePage.banner.length > 0 && <Banner props={homePage.banner} />}
 			<div className="container py-10">
 				<h2 className="text-xl lg:text-3xl my-10">Latest {lastNumber} Posts</h2>
-				<PostGrid posts={latestPost} />
+				<PostGrid posts={latestPost} categories={categories} />
 				{/* <LatestPost /> */}
 			</div>
 		</div>

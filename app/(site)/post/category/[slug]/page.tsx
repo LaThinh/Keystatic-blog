@@ -1,26 +1,19 @@
 import PostGrid from "@/app/components/Post/PostGrid";
 import { ICategory } from "@/app/keystatic/interface";
-import { Reader, getCategoryBySlug } from "@/app/keystatic/utils";
+import { Reader, getCategoryBySlug, sortPostsByPublishDate } from "@/app/keystatic/utils";
 import { notFound } from "next/navigation";
 import React from "react";
 
 export default async function CategoryPage({ params }: { params: { slug: string } }) {
 	const slug = params.slug;
+
 	if (!slug) notFound();
 
-	// const category = await getCategoryBySlug(slug);
-	// const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts/?categorySlug=${slug}`, {
-	// 	next: {
-	// 		revalidate: 120,
-	// 	},
-	// });
-	// const categoryPosts = await response.json();
-
+	const categories = await Reader.collections.categories.all();
 	const category = await Reader.collections.categories.read(slug);
 	const allPosts = await Reader.collections.posts.all();
-	const categoryPosts = allPosts.filter((post) => post.entry.categories.includes(slug));
-
-	console.log(category);
+	const posts = sortPostsByPublishDate(allPosts);
+	const categoryPosts = posts.filter((post) => post.entry.categories.includes(slug));
 
 	return (
 		<div className="category-page w-full py-10">
@@ -28,10 +21,12 @@ export default async function CategoryPage({ params }: { params: { slug: string 
 				<span>Category {category?.category}</span>
 			</h1>
 			<div className="post-category">
-				<pre className="font-script text-2xl text-center">{category?.description}</pre>
+				<pre className="font-script text-2xl text-center whitespace-pre-wrap">
+					{category?.description || "Những bài viết hay vê " + category?.category}
+				</pre>
 			</div>
 			<div className="post-container mt-8">
-				<PostGrid posts={categoryPosts} size="lg" />
+				<PostGrid posts={categoryPosts} categories={categories} size="lg" />
 			</div>
 		</div>
 	);
