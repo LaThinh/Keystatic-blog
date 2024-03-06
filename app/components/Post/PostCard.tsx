@@ -59,8 +59,8 @@ export default function PostCard({
 
 					<Link
 						href={`/post/${post.slug}`}
-						className={`post-title w-full capitalize line-clamp-2 h-16
-						text-gray-700 hover:text-sky-500 text-xl @lg:text-2xl`}
+						className={`post-title w-full capitalize line-clamp-2 h-16 leading-8
+						text-gray-700 hover:text-sky-500 text-xl @md:text-2xl`}
 					>
 						<h3>{post.entry.title}</h3>
 					</Link>

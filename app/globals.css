@@ -97,7 +97,7 @@ h6 {
 }
 
 .footer-col a {
-	@apply text-gray-600 hover:text-gray-800;
+	@apply text-gray-600 hover:text-gray-800 hover:underline;
 }
 
 .post-card .post-content {

@@ -8,10 +8,10 @@ export default async function Footer() {
 	const menuLinks = await Reader.singletons.menuLinks.read();
 
 	return (
-		<footer className="footer border-t px-5 py-5  bg-slate-100">
+		<footer className="footer border-t px-5 py-5  bg-slate-200">
 			<div className="container m-auto">
 				<div className="footer-content flex flex-col md:flex-row md:gap-10 @container">
-					<div className="footer-logo w-full m-auto py-5 max-w-[400px] order-3 md:order-1 md:w-1/4  ">
+					<div className="footer-logo w-full m-auto py-5 border-t order-3 md:order-1 md:flex-1  md:border-t-0">
 						<div className="flex flex-col h-full gap-4 justify-center content-center text-center md:text-left">
 							<h3 className="text-3xl text-gradient font-script">La Keystatic Blog</h3>
 							<p className="copyright text-gray-500">
@@ -20,8 +20,8 @@ export default async function Footer() {
 						</div>
 					</div>
 
-					<div className="footer-columns order-2 flex flex-1 flex-wrap justify-between md:justify-end">
-						<div className="footer-col w-full md:w-1/3 min-w-32 max-w-72">
+					<div className="footer-columns @4xl:w-3/4 max-w-[720px] order-2 grid gap-4 grid-cols-1 @sm:grid-cols-2 @xl:grid-cols-3">
+						<div className="footer-col">
 							<h3>Pages</h3>
 							{menuLinks && menuLinks.items.length > 0 && (
 								<ul className="footer-menu">
@@ -35,10 +35,10 @@ export default async function Footer() {
 								</ul>
 							)}
 						</div>
-						<div className="footer-col w-full md:w-1/3 min-w-32 max-w-72">
+						<div className="footer-col">
 							<Categories />
 						</div>
-						<div className="footer-col w-full md:w-1/3 min-w-32 max-w-72">
+						<div className="footer-col">
 							<h3>Social Links</h3>
 							<SocialLinks />
 						</div>

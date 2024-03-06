@@ -19,6 +19,7 @@ export default async function AuthorPage({ params }: { params: { slug: string } 
 
 	if (!author) notFound();
 	const allPosts = await Reader.collections.posts.all();
+	const categories = await Reader.collections.categories.all();
 	const authorPosts = allPosts.filter((post) => post.entry.authors.includes(slug));
 
 	return (
@@ -63,7 +64,7 @@ export default async function AuthorPage({ params }: { params: { slug: string } 
 				{authorPosts.length > 0 && (
 					<div className="post-written my-5 pt-5 border-t">
 						<h3 className="text-xl my-5">Posts written</h3>
-						<PostGrid posts={authorPosts} />
+						<PostGrid posts={authorPosts} categories={categories} />
 					</div>
 				)}
 			</div>

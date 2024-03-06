@@ -12,7 +12,7 @@ export default async function Header() {
 		<header className="header w-full bg-white/70 backdrop-blur-md shadow-sm sticky top-0 z-50">
 			<div className="container m-auto min-h-16 flex justify-between items-center">
 				<div className="logo">
-					<Link className="text-2xl md:text-3xl lg:text-4xl font-script text-gradient" href="/">
+					<Link className="text-3xl md:text-4xl lg:text-4xl font-script text-gradient" href="/">
 						Keystatic
 					</Link>
 				</div>
@@ -28,7 +28,7 @@ export default async function Header() {
 					</ul>
 				)}
 				<div className="account">
-					<Link className="text-gray-700 font-script" href={`/keystatic`}>
+					<Link className="text-gray-700 font-semibold text-lg" href={`/keystatic`}>
 						Login
 					</Link>
 				</div>

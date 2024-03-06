@@ -69,7 +69,7 @@ export default async function PostPage({ params }: { params: { slug: string } })
 				<article className="post-article bg-white @xl:border @xl:rounded-2xl @xl:shadow-sm  ">
 					<h1
 						className="page-title text-3xl text-gradient !my-0 px-5
-					@lg:text-4xl @lg:leading-normal
+					@lg:text-4xl @lg:leading-normal max-w-4xl
 					@2xl:text-5xl @2xl:leading-relaxed"
 					>
 						{post?.title}
@@ -94,7 +94,7 @@ export default async function PostPage({ params }: { params: { slug: string } })
 
 					<div className="prose w-full @4xl:prose-lg @3xl:max-w-5xl p-3 max-w-4xl @xl:p-5 @4xl:p-6">
 						{postContent && (
-							<div className="post-content ">
+							<div className="post-content max-w-3xl m-auto">
 								<DocumentRenderer
 									document={postContent}
 									componentBlocks={{
