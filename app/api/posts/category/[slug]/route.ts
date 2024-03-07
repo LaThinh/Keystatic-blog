@@ -2,14 +2,14 @@ import { Reader } from "@/app/keystatic/utils";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {
-	const pathName = request.nextUrl.pathname;
-	const slug = pathName.substring(pathName.lastIndexOf("/") + 1) || "slug";
-
-	console.log(pathName);
-	console.log("Gat API Posts Category slug = " + slug);
-
 	try {
 		const posts = await Reader.collections.posts.all();
+		const pathName = request.nextUrl.pathname;
+		const slug = pathName.substring(pathName.lastIndexOf("/") + 1) || "slug";
+
+		console.log(pathName);
+		console.log("Get API Posts Category slug = " + slug);
+
 		const postCategory = posts.filter((post) => post.entry.categories.includes(slug));
 
 		console.log(postCategory);
