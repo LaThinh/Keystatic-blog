@@ -31,7 +31,7 @@ export async function GET(request: Request) {
 			};
 		});
 
-		return new Response(JSON.stringify(dataPosts), {
+		return new Response(JSON.stringify(posts), {
 			status: 200,
 			headers: {
 				"Access-Control-Allow-Origin": "*",
