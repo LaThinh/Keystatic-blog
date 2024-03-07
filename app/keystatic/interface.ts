@@ -5,11 +5,14 @@ export interface IPost {
 	entry: {
 		title: string;
 		content: () => Promise<DocumentElement[]>;
-		draft: boolean;
+		isFeatured: boolean;
 		publishDate: string;
+		draft: boolean;
 		heroImage: string | null;
+		postType: "normal" | "gallery" | "poetry" | "video";
 		categories: readonly string[];
 		authors: readonly string[];
+		customClasses: string;
 	};
 }
 

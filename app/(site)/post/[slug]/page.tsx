@@ -66,7 +66,7 @@ export default async function PostPage({ params }: { params: { slug: string } })
 	return (
 		<div className="post-detail w-full my-10 m-auto flex flex-col gap-10  @container">
 			<Suspense fallback={<Loading text="Loading Post" />}>
-				<article className="post-article bg-white @xl:border @xl:rounded-2xl @xl:shadow-sm  ">
+				<article className={`post-article bg-white @xl:border @xl:rounded-2xl @xl:shadow-sm type-${post?.postType} `}>
 					<h1
 						className="page-title text-3xl text-gradient !my-0 px-5
 					@lg:text-4xl @lg:leading-normal max-w-4xl
@@ -82,6 +82,7 @@ export default async function PostPage({ params }: { params: { slug: string } })
 								height="500"
 								alt={post?.title || "Post Title"}
 								className="w-full"
+								priority
 							/>
 						</div>
 					)}

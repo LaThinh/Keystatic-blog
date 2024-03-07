@@ -8,7 +8,7 @@ export default async function Footer() {
 	const menuLinks = await Reader.singletons.menuLinks.read();
 
 	return (
-		<footer className="footer border-t px-5 py-5  bg-slate-200">
+		<footer className="footer border-t px-5 py-5  bg-slate-100">
 			<div className="container m-auto">
 				<div className="footer-content flex flex-col md:flex-row md:gap-10 @container">
 					<div className="footer-logo w-full m-auto py-5 border-t order-3 md:order-1 md:flex-1  md:border-t-0">

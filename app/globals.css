@@ -110,3 +110,16 @@ h6 {
 	opacity: 0.8;
 	transform: scale(0.95);
 }
+
+.post-detail .type-poetry {
+	text-align: center;
+}
+
+.post-detail .type-poetry p {
+	margin: 0 auto;
+	@apply font-script text-xl lg:text-2xl xl:text-3xl;
+}
+
+.post-detail .type-poetry p:nth-child(4n + 1) {
+	margin-bottom: 40px;
+}

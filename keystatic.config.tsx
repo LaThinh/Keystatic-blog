@@ -54,11 +54,28 @@ export default config({
 				}),
 				content: fields.document({
 					label: "Content",
-					formatting: true,
-					dividers: true,
+					//formatting: true,
+					formatting: {
+						alignment: {
+							center: true,
+							end: true,
+						},
+						inlineMarks: true,
+						listTypes: {
+							ordered: true,
+							unordered: true,
+						},
+						headingLevels: [1, 2, 3, 4, 5, 6],
+						blockTypes: {
+							blockquote: true,
+							code: true,
+						},
+						softBreaks: true,
+					},
 					links: true,
 					images: true,
 					tables: true,
+					// dividers: true,
 					componentBlocks: {
 						"youtube-video": component({
 							label: "YouTube Video",
@@ -82,16 +99,17 @@ export default config({
 						}),
 					},
 				}),
-				draft: fields.checkbox({
-					label: "Draft",
-					description: "Set this post as draft to prevent it from being published",
-				}),
+				isFeatured: fields.checkbox({ label: "Is Featured" }),
 				publishDate: fields.date({
 					label: "Publish Date",
 					validation: {
 						isRequired: true,
 					},
 					defaultValue: { kind: "today" },
+				}),
+				draft: fields.checkbox({
+					label: "Draft",
+					description: "Set this post as draft to prevent it from being published",
 				}),
 				heroImage: fields.image({
 					label: "Hero Image",
@@ -100,6 +118,17 @@ export default config({
 					publicPath: "/images/posts",
 				}),
 				// author: fields.relationship({ label: "Author", collection: "authors" }),
+				postType: fields.select({
+					label: "Post Type",
+					description: "Type of this post",
+					options: [
+						{ label: "Normal", value: "normal" },
+						{ label: "Gallery", value: "gallery" },
+						{ label: "Poetry", value: "poetry" },
+						{ label: "Video", value: "video" },
+					],
+					defaultValue: "normal",
+				}),
 				categories: fields.array(
 					fields.relationship({
 						label: "Categories",
@@ -128,6 +157,7 @@ export default config({
 						itemLabel: (item) => item.value || "Please select an author",
 					}
 				),
+				customClasses: fields.text({ label: "Custom Classes", description: "Add class custom for this post" }),
 			},
 		}),
 

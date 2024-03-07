@@ -30,8 +30,8 @@ export default function Banner({ props }: { props: any }) {
 							<Image
 								src={item?.image || "/"}
 								alt={item?.title || "title"}
-								width={2400}
-								height={1100}
+								width={2000}
+								height={900}
 								className="w-full max-h-[900px] aspect-[20/9] object-cover"
 							/>
 						</div>
