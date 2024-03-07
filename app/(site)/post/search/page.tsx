@@ -26,11 +26,12 @@ export default function SearchPage() {
 			console.log("Fetch All Data Posts");
 			if (posts) return;
 
-			const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+			//const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+			const apiUrl = "../";
 
 			setLoading(true);
-			const resPost = await fetch(`${apiUrl}/api/posts/all`, { next: { revalidate: 300 } });
-			const resCate = await fetch(`${apiUrl}/api/posts/category`, { next: { revalidate: 300 } });
+			const resPost = await fetch(`${apiUrl}api/posts/all`, { next: { revalidate: 300 } });
+			const resCate = await fetch(`${apiUrl}api/posts/category`, { next: { revalidate: 300 } });
 			const dataPost = await resPost.json();
 			const dataCate = await resCate.json();
 			setPosts(dataPost);
