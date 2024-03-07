@@ -13,7 +13,7 @@ export default async function Header() {
 			<div className="container m-auto min-h-16 flex justify-between items-center">
 				<div className="logo">
 					<Link className="text-3xl md:text-4xl lg:text-4xl font-script text-gradient" href="/">
-						Keystatic
+						Paul La
 					</Link>
 				</div>
 				{menuLink?.items && menuLink.items.length > 0 && (

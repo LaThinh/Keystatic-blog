@@ -6,7 +6,7 @@ import Loading from "@/app/components/Loading";
 
 export const metadata: Metadata = {
 	metadataBase: new URL("https://la-keystatic.vercel.app/"),
-	title: "Keystatic Blog | Paul La",
+	title: "Paul La's Blog | Keystatic Blog & NextJs 14",
 	description: "Keystatic Blog Content Management",
 };
 

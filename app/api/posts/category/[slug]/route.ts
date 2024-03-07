@@ -12,18 +12,19 @@ export async function GET(request: NextRequest) {
 		const posts = await Reader.collections.posts.all();
 		const postCategory = posts.filter((post) => post.entry.categories.includes(slug));
 
-		if (!postCategory || postCategory.length === 0) {
-			return NextResponse.json({ error: `Not found any Post with Category Slug: ${slug}` }, { status: 200 });
-		}
+		console.log(postCategory);
+		// if (!postCategory || postCategory.length === 0) {
+		// 	return NextResponse.json({ error: `Not found any Post with Category Slug: ${slug}` }, { status: 200 });
+		// }
 
 		const dataPosts = postCategory.map((post) => {
 			return {
 				...post,
-				slug: slug,
+				categorySlug: slug,
 			};
 		});
 
-		return NextResponse.json(dataPosts);
+		return NextResponse.json([dataPosts, posts]);
 	} catch (error: any) {
 		return NextResponse.json({ error: `An error occurred: ${error.message}` }, { status: 200 });
 	}
