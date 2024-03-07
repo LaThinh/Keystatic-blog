@@ -17,21 +17,21 @@ export async function GET(request: Request) {
 
 		console.log("Get API Posts Category slug = " + slug);
 
-		const postCategory = posts.filter((post) => post.entry.categories.includes(slug));
-		console.log(postCategory.length);
+		// const postCategory = posts.filter((post) => post.entry.categories.includes(slug));
+		// console.log(postCategory.length);
 
-		if (!postCategory || postCategory.length === 0) {
-			return NextResponse.json({ error: `Not found any Post with Category Slug: ${slug}` }, { status: 200 });
-		}
+		// if (!postCategory || postCategory.length === 0) {
+		// 	return NextResponse.json({ error: `Not found any Post with Category Slug: ${slug}` }, { status: 200 });
+		// }
 
-		const dataPosts: any = postCategory.map((post, index) => {
+		const dataPosts = posts.map((post, index) => {
 			return {
 				...post,
 				index: index + 1,
 			};
 		});
 
-		return new Response(JSON.stringify(posts), {
+		return new Response(JSON.stringify(dataPosts), {
 			status: 200,
 			headers: {
 				"Access-Control-Allow-Origin": "*",
