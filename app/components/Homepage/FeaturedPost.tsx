@@ -21,6 +21,7 @@ export default async function FeaturedPost() {
 
 			<div className={`post-list grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-6 lg:grid-cols-6 xl:grid-cols-5`}>
 				{featuredPost &&
+					featuredPost.length > 0 &&
 					featuredPost.map((post, index) => {
 						let itemClass = "";
 						switch (index) {
