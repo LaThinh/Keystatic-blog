@@ -39,15 +39,15 @@ export default async function HomePage() {
 	// console.log(latestPost);
 
 	return (
-		<div className="homepage">
+		<div className="homepage pb-12">
 			{homePage?.banner && homePage.banner.length > 0 && <Banner props={homePage.banner} />}
-			<div className="container w-full !max-w-[1800px] ">
+			<div className="container w-full !max-w-[1800px] flex flex-col gap-5 py-5">
 				<FeaturedPost />
-			</div>
-			<div className="container py-10">
-				<h2 className="text-xl lg:text-3xl my-10">Latest {lastNumber} Posts</h2>
-				<PostGrid posts={latestPost} categories={categories} />
-				{/* <LatestPost /> */}
+
+				<div className="latest-post">
+					<h2 className="text-xl lg:text-3xl my-10">Latest {lastNumber} Posts</h2>
+					<PostGrid posts={latestPost} categories={categories} />
+				</div>
 			</div>
 		</div>
 	);

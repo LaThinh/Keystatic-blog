@@ -54,7 +54,7 @@ export default function PostCard({
 					)}
 
 					{post.entry.publishDate && (
-						<div className="hidden @xs:block post-entry-date text-gray-700 text-md">{post.entry.publishDate}</div>
+						<div className="hidden @sm:block post-entry-date text-gray-700 text-md">{post.entry.publishDate}</div>
 					)}
 
 					<Link
