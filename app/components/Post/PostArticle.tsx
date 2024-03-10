@@ -41,7 +41,7 @@ function PostArticle({ slug }: { slug: string }) {
 				<div className="prose w-full @4xl:prose-lg @3xl:max-w-5xl p-3 @xl:p-5 @4xl:p-6">
 					{post?.categories && post.categories.length > 0 && (
 						<div className="post-categories w-full flex items-center justify-center">
-							<CategoryTags categories={post.categories} />
+							{/* <CategoryTags categories={post.categories} /> */}
 						</div>
 					)}
 					{post?.content && (

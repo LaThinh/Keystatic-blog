@@ -25,7 +25,7 @@ export default async function PostGrid({
 	categories?: ICategory[];
 	size?: "sm" | "md" | "lg";
 }) {
-	let gridClass = "@2xl:grid-cols-2 @xl:gap-6 @5xl:grid-cols-3 @4xl:gap-8";
+	let gridClass = "@2xl:grid-cols-2 @xl:gap-6 @5xl:grid-cols-3 @6xl:gap-8";
 	let textSize = "text-md";
 	// if (!posts) {
 	// 	posts = await Reader.collections.posts.all();
@@ -41,7 +41,7 @@ export default async function PostGrid({
 			textSize = "text-sm";
 			break;
 		case "lg":
-			gridClass = "@3xl:grid-cols-2 @xl:gap-5 @3xl:gap-8 @6xl:grid-cols-3 @5xl:gap-8 @7xl:grid-cols-4";
+			gridClass = "@3xl:grid-cols-2 @xl:gap-5 @3xl:gap-6 @6xl:grid-cols-3 @5xl:gap-8 @7xl:grid-cols-4";
 			textSize = "xl:text-xl";
 			break;
 	}

@@ -115,9 +115,16 @@ h6 {
 	text-align: center;
 }
 
-.post-detail .type-poetry p {
-	margin: 0 auto;
-	@apply font-script text-xl lg:text-2xl xl:text-3xl;
+.post-detail .post-content h1,
+.post-detail .post-content h2,
+.post-detail .post-content h3,
+.post-detail .post-content h4 {
+	@apply font-inter;
+}
+
+.post-detail .type-poetry .post-content p {
+	margin: 0 auto 10px auto;
+	@apply font-script text-2xl @lg:text-3xl @2xl:text-4xl;
 }
 
 .post-detail .type-poetry p:nth-child(4n + 1) {

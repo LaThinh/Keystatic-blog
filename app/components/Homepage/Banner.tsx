@@ -37,7 +37,7 @@ export default function Banner({ props }: { props: any }) {
 						</div>
 						<div
 							className="banner-info flex flex-col gap-5 p-5 items-start w-full 
-                                md:absolute md:left-[4%] md:top-[50%] md:translate-y-[-50%] md:z-10 md:w-[92%] md:max-w-[800px] 
+                                md:absolute md:left-[5%] md:top-[50%] md:translate-y-[-50%] md:z-10 md:w-[90%] md:max-w-[720px] 
                                 md:rounded-xl text-white bg-slate-600/70"
 						>
 							<h2 className="banner-title text-3xl lg:text-5xl lg:leading-normal">{item?.title}</h2>

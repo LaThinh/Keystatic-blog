@@ -10,12 +10,12 @@ export async function GET(request: Request) {
 		//const pathName = request.nextUrl.pathname;
 		//const slug = pathName.substring(pathName.lastIndexOf("/") + 1) || "slug";
 		//console.log(pathName);
-		const url = request.url;
-		const slug = url.substring(url.lastIndexOf("/") + 1) || "slug";
-		// const { searchParams } = new URL(request.url);
-		// const slug = request.url || "slug";
+		// const url = request.url;
+		// const slug = url.substring(url.lastIndexOf("/") + 1) || "slug";
+		// // const { searchParams } = new URL(request.url);
+		// // const slug = request.url || "slug";
 
-		console.log("Get API Posts Category slug = " + slug);
+		// console.log("Get API Posts Category slug = " + slug);
 
 		// const postCategory = posts.filter((post) => post.entry.categories.includes(slug));
 		// console.log(postCategory.length);

@@ -40,7 +40,7 @@ export default function PostCard({
 							height={400}
 							src={post.entry?.heroImage}
 							alt={post.entry?.title}
-							className="post-img !my-0 object-cover aspect-[3.6/2] hover:scale-110 "
+							className="post-img !my-0 w-full object-cover aspect-[3.6/2] hover:scale-110 "
 						/>
 					) : (
 						<div className="w-full h-full flex items-center justify-center">
@@ -54,13 +54,13 @@ export default function PostCard({
 					)}
 
 					{post.entry.publishDate && (
-						<div className="post-entry-date text-gray-700 text-md">{post.entry.publishDate}</div>
+						<div className="hidden @xs:block post-entry-date text-gray-700 text-md">{post.entry.publishDate}</div>
 					)}
 
 					<Link
 						href={`/post/${post.slug}`}
-						className={`post-title w-full capitalize line-clamp-2 h-16 leading-8
-						text-gray-700 hover:text-sky-500 text-xl @md:text-2xl`}
+						className={`post-title w-full capitalize min-h-12 line-clamp-3 @xs:line-clamp-2 @xs:h-16 @xs:leading-8
+						text-gray-700 hover:text-sky-500 @xs:text-xl @md:text-2xl`}
 					>
 						<h3>{post.entry.title}</h3>
 					</Link>
