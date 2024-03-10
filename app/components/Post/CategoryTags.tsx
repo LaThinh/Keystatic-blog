@@ -35,9 +35,8 @@ export const CategoryTag = ({ category }: { category: ICategory | null }) => {
 	return (
 		<Link
 			href={`/post/category/${category.slug}`}
-			className={`category-link line-clamp-1 p-2 py-1 rounded-sm whitespace-nowrap uppercase text-[10px] w-auto @sm:text-sm !text-white ${bgColor} ${
-				category.entry.customColor ? "hover:opacity-80" : ""
-			}`}
+			className={`category-link line-clamp-1 p-2 py-1 whitespace-nowrap uppercase 
+			text-[10px] w-auto @xs:text-sm !text-white ${bgColor} ${category.entry.customColor ? "hover:opacity-80" : ""}`}
 			style={{ background: category.entry.customColor }}
 		>
 			<span>{category.entry.category}</span>
@@ -54,7 +53,7 @@ export default function CategoryTags({
 }) {
 	return (
 		<div className="@xs:max-w-[calc(100%-120px)]">
-			<div className="post-categories flex gap-3 flex-wrap h-6 @sm:h-8 overflow-hidden">
+			<div className="post-categories flex gap-3 flex-wrap h-7 @sm:h-8 overflow-hidden">
 				{categories.map((category, index) => {
 					const cate = getCategoryBySlug(category, allCategory);
 

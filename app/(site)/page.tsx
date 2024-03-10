@@ -41,8 +41,10 @@ export default async function HomePage() {
 	return (
 		<div className="homepage">
 			{homePage?.banner && homePage.banner.length > 0 && <Banner props={homePage.banner} />}
-			<div className="container py-10">
+			<div className="container w-full !max-w-[1800px] ">
 				<FeaturedPost />
+			</div>
+			<div className="container py-10">
 				<h2 className="text-xl lg:text-3xl my-10">Latest {lastNumber} Posts</h2>
 				<PostGrid posts={latestPost} categories={categories} />
 				{/* <LatestPost /> */}

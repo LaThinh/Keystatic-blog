@@ -36,12 +36,16 @@ export default function FeaturedPost() {
 	return (
 		<>
 			{loading ? (
-				<Loading text="Loading Featured Post" />
+				<div className="min-h-32 flex items-center">
+					<Loading text="Loading Featured Post" />
+				</div>
 			) : (
 				featuredPost.length > 0 && (
 					<div className="featured-post @container">
 						<h2 className="text-xl lg:text-3xl my-10">Featured Post</h2>
-						<div className={`post-list grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-6 lg:grid-cols-6 xl:grid-cols-5`}>
+						<div
+							className={`post-list grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-6 lg:grid-cols-6 xl:grid-cols-5 2xl:gap-8`}
+						>
 							{featuredPost.slice(0, 5).map((post, index) => {
 								let itemClass = "";
 								switch (index) {

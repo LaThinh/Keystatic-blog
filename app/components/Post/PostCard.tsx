@@ -32,7 +32,7 @@ export default function PostCard({
 			<div className="post-content @container flex flex-col border rounded-xl overflow-hidden hover:shadow-lg bg-white">
 				<Link
 					href={`/post/${post.slug}`}
-					className="post-image aspect-[3.6/2] block bg-gray-200 overflow-hidden hover:bg-gray-300"
+					className="post-image aspect-[3.6/2] block max-h-[556px] bg-gray-200 overflow-hidden hover:bg-gray-300"
 				>
 					{post.entry?.heroImage ? (
 						<Image
@@ -48,7 +48,7 @@ export default function PostCard({
 						</div>
 					)}
 				</Link>
-				<div className="post-info p-4 @lg:px-6 flex flex-wrap justify-between items-baseline gap-3">
+				<div className="post-info p-4 @lg:px-6 flex flex-wrap justify-between items-baseline gap-2">
 					{categories && post.entry.categories && post.entry.categories.length > 0 && (
 						<CategoryTags categories={post.entry.categories} allCategory={categories} />
 					)}
@@ -59,8 +59,10 @@ export default function PostCard({
 
 					<Link
 						href={`/post/${post.slug}`}
-						className={`post-title w-full capitalize min-h-12 line-clamp-3 @xs:line-clamp-2 @xs:h-16 @xs:leading-8
-						text-gray-700 hover:text-sky-500 @xs:text-xl @md:text-2xl`}
+						className={`post-title w-full capitalize min-h-12 line-clamp-3 text-gray-700 hover:text-sky-500
+						@xs:line-clamp-2 @xs:h-16  @xs:leading-8 @xs:text-xl 
+						@md:text-2xl @3xl:h-12
+						@4xl:h-auto @4xl:min-h-8`}
 					>
 						<h3>{post.entry.title}</h3>
 					</Link>
