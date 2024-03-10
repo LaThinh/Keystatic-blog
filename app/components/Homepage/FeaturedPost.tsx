@@ -1,57 +1,78 @@
-import { IPost } from "@/app/keystatic/interface";
-import React from "react";
+"use client";
+import { ICategory, IPost } from "@/app/keystatic/interface";
+import React, { useEffect, useState } from "react";
 import PostCard from "../Post/PostCard";
+import Loading from "../Loading";
 
-export default async function FeaturedPost() {
-	const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-	const response = await fetch(`${apiUrl}/api/posts/featured`, { next: { revalidate: 120 } });
-	const resCate = await fetch(`${apiUrl}/api/posts/category`, { next: { revalidate: 300 } });
+export default function FeaturedPost() {
+	// const apiUrl = "/"; //process.env.NEXT_PUBLIC_API_URL;
+	// const response = await fetch(`${apiUrl}api/posts/featured`, { next: { revalidate: 120 } });
+	// const resCate = await fetch(`${apiUrl}api/posts/category`, { next: { revalidate: 300 } });
+	// const data = await response.json();
+	// const categories = await resCate.json();
 
-	const data = await response.json();
+	const [featuredPost, setFeaturedPosts] = useState<IPost[]>([]);
+	const [categories, setCategories] = useState<ICategory[]>([]);
+	const [loading, setLoading] = useState(true);
 
-	const categories = await resCate.json();
+	useEffect(() => {
+		console.log("use Effect");
+		const fetchPosts = async () => {
+			setLoading(true);
 
-	let featuredPost: IPost[] = data;
-	if (!featuredPost) return null;
-	else if (featuredPost.length > 0) featuredPost = featuredPost.slice(0, 4);
+			const apiUrl = "../";
+			const resPost = await fetch(`${apiUrl}api/posts/featured`, { next: { revalidate: 300 } });
+			const resCate = await fetch(`${apiUrl}api/posts/category`, { next: { revalidate: 300 } });
+			const dataPost = await resPost.json();
+			const dataCate = await resCate.json();
+			setFeaturedPosts(dataPost);
+			setCategories(dataCate);
+
+			setLoading(false);
+		};
+		fetchPosts();
+	}, []);
 
 	return (
-		<div className="@container">
-			<h2 className="text-xl lg:text-3xl my-10">Featured Post</h2>
+		<>
+			{loading ? (
+				<Loading text="Loading Featured Post" />
+			) : (
+				featuredPost.length > 0 && (
+					<div className="featured-post @container">
+						<h2 className="text-xl lg:text-3xl my-10">Featured Post</h2>
+						<div className={`post-list grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-6 lg:grid-cols-6 xl:grid-cols-5`}>
+							{featuredPost.slice(0, 5).map((post, index) => {
+								let itemClass = "";
+								switch (index) {
+									case 0:
+										itemClass = "md:col-span-3 md:row-span-2 lg:col-span-1 lg:col-span-2 xl:col-span-3 xl:col-span-2";
+										break;
+									case 1:
+									case 2:
+										itemClass = "lg:col-span-2 xl:col-span-1";
+										break;
+									case 3:
+										itemClass = "lg:hidden lg:col-span-2 xl:block xl:col-span-1";
+										break;
+									case 4:
+										itemClass = "md:hidden lg:col-span-2 xl:block xl:col-span-1";
+										break;
+									case 5:
+										itemClass = "col-span-2";
+										break;
+								}
 
-			<div className={`post-list grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-6 lg:grid-cols-6 xl:grid-cols-5`}>
-				{featuredPost &&
-					featuredPost.length > 0 &&
-					featuredPost.map((post, index) => {
-						let itemClass = "";
-						switch (index) {
-							case 0:
-								itemClass = "md:col-span-3 md:row-span-2 lg:col-span-1 lg:col-span-2 xl:col-span-3 xl:col-span-2";
-								break;
-							case 1:
-							case 2:
-								itemClass = "lg:col-span-2 xl:col-span-1";
-								break;
-							case 3:
-								itemClass = "lg:hidden lg:col-span-2 xl:block xl:col-span-1";
-								break;
-							case 4:
-								itemClass = "md:hidden lg:col-span-2 xl:block xl:col-span-1";
-								break;
-							case 5:
-								itemClass = "col-span-2";
-								break;
-						}
-
-						return (
-							<div key={index} className={`featured-post ${itemClass}`}>
-								<PostCard post={post} categories={categories} key={post.slug} />
-							</div>
-						);
-					})}
-			</div>
-
-			{/* {<PostGrid posts={featuredPost.slice(0, 3)} categories={categories} />} */}
-		</div>
+								return (
+									<div key={index} className={`featured-post ${itemClass}`}>
+										<PostCard post={post} categories={categories} key={post.slug} />
+									</div>
+								);
+							})}
+						</div>
+					</div>
+				)
+			)}
+		</>
 	);
 }
