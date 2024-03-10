@@ -11,7 +11,9 @@ export default async function FeaturedPost() {
 
 	const categories = await resCate.json();
 
-	const featuredPost: IPost[] = data;
+	let featuredPost: IPost[] = data;
+	if (!featuredPost) return null;
+	else if (featuredPost.length > 0) featuredPost = featuredPost.slice(0, 4);
 
 	return (
 		<div className="@container">
@@ -19,7 +21,7 @@ export default async function FeaturedPost() {
 
 			<div className={`post-list grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-6 lg:grid-cols-6 xl:grid-cols-5`}>
 				{featuredPost &&
-					featuredPost.slice(0, 5).map((post, index) => {
+					featuredPost.map((post, index) => {
 						let itemClass = "";
 						switch (index) {
 							case 0:
