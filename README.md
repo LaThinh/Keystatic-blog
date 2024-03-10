@@ -1,6 +1,17 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+ # La Keystatic - Blog CMS 
+ 
+### Home Page
+![image](https://github.com/LaThinh/Keystatic-blog/assets/5600400/058a30d8-cfa1-4fcb-be0f-4ca331a9ad6f)
+
+### Blog Category Page
+![image](https://github.com/LaThinh/Keystatic-blog/assets/5600400/4adeaf10-19b5-4290-bc59-09231e8047fc)
+
+### Backend Content Management
+![image](https://github.com/LaThinh/Keystatic-blog/assets/5600400/64e332fc-84a9-408d-a58d-625b47e371da)
+
 
 ## Getting Started
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 First, run the development server:
 
