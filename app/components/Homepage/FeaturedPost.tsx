@@ -41,40 +41,42 @@ export default function FeaturedPost() {
 				</div>
 			) : (
 				featuredPost.length > 0 && (
-					<div className="featured-post @container">
-						<h2 className="text-xl lg:text-3xl my-10">Featured Post</h2>
-						<div
-							className={`post-list grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-6 lg:grid-cols-6 xl:grid-cols-5 2xl:gap-8`}
-						>
-							{featuredPost.slice(0, 5).map((post, index) => {
-								let itemClass = "";
-								switch (index) {
-									case 0:
-										itemClass = "md:col-span-3 md:row-span-2 lg:col-span-1 lg:col-span-2 xl:col-span-3 xl:col-span-2";
-										break;
-									case 1:
-									case 2:
-										itemClass = "lg:col-span-2 xl:col-span-1";
-										break;
-									case 3:
-										itemClass = "lg:hidden lg:col-span-2 xl:block xl:col-span-1";
-										break;
-									case 4:
-										itemClass = "md:hidden lg:col-span-2 xl:block xl:col-span-1";
-										break;
-									case 5:
-										itemClass = "col-span-2";
-										break;
-								}
+					<section className="featured-post pb-5 lg:pb-10">
+						<div className="container @container  w-full !max-w-[1600px] flex flex-col gap-5 py-5">
+							<h3 className="">Featured Post</h3>
+							<div
+								className={`post-list grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-6 lg:grid-cols-6 xl:grid-cols-5 xl:gap-6`}
+							>
+								{featuredPost.slice(0, 5).map((post, index) => {
+									let itemClass = "";
+									switch (index) {
+										case 0:
+											itemClass = "md:col-span-3 md:row-span-2 lg:col-span-1 lg:col-span-2 xl:col-span-3";
+											break;
+										case 1:
+										case 2:
+											itemClass = "lg:col-span-2 xl:col-span-1";
+											break;
+										case 3:
+											itemClass = "lg:hidden lg:col-span-2 xl:block xl:col-span-1";
+											break;
+										case 4:
+											itemClass = "md:hidden lg:col-span-2 xl:block xl:col-span-1";
+											break;
+										case 5:
+											itemClass = "col-span-2";
+											break;
+									}
 
-								return (
-									<div key={index} className={`featured-post ${itemClass}`}>
-										<PostCard post={post} categories={categories} key={post.slug} />
-									</div>
-								);
-							})}
+									return (
+										<div key={index} className={`featured-post ${itemClass}`}>
+											<PostCard post={post} categories={categories} key={post.slug} />
+										</div>
+									);
+								})}
+							</div>
 						</div>
-					</div>
+					</section>
 				)
 			)}
 		</>

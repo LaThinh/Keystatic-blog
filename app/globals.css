@@ -130,3 +130,12 @@ h6 {
 .post-detail .type-poetry p:nth-child(4n + 1) {
 	margin-bottom: 40px;
 }
+
+.homepage section h3,
+.homepage section .section-title {
+	@apply mt-0 mb-2 lg:mb-5 text-2xl lg:text-3xl 2xl:text-4xl;
+	/* padding: 20px; */
+}
+.homepage section:nth-child(2n + 1) {
+	background-color: rgb(226 232 240);
+}

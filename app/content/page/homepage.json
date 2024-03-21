@@ -1,30 +1,30 @@
 {
-  "banner": [
-    {
-      "image": "/images/homepage/banner/0/image.jpg",
-      "title": "Vịnh Hạ Long - Kỳ quan thiên nhiên thế giới",
-      "description": "Vịnh Hạ Long là một vịnh biển thuộc thành phố Hạ Long, tỉnh Quảng Ninh, Việt Nam. Nơi đây nổi tiếng với cảnh quan thiên nhiên hùng vĩ, với hàng nghìn đảo đá vôi nhô lên từ biển xanh, tạo nên một bức tranh thiên nhiên vô cùng tráng lệ.\n\nVịnh Hạ Long được UNESCO công nhận là di sản thiên nhiên thế giới vào năm 1994 và là một trong những điểm du lịch nổi tiếng nhất của Việt Nam."
-    },
-    {
-      "image": "/images/homepage/banner/1/image.jpg",
-      "title": "Vẻ đẹp rực rỡ của Hoàng Hôn Vũng Tàu",
-      "description": "Hoàng hôn Vũng Tàu là một trong những cảnh đẹp thiên nhiên thu hút du khách nhất. Khi mặt trời dần khuất sau dãy núi Nhỏ, bầu trời Vũng Tàu như khoác lên mình một chiếc áo rực rỡ với những gam màu đỏ, cam, vàng, hồng.\n\nBầu trời nhuộm màu cam rực rỡ, phản chiếu xuống mặt biển tạo nên một khung cảnh lấp lánh lung linh. Từng tia nắng vàng óng ả len lỏi qua những tán cây, vẽ lên những hình ảnh huyền ảo trên bờ cát."
-    },
-    {
-      "image": "/images/homepage/banner/2/image.avif",
-      "title": "KeyStatic Content Management",
-      "description": "KeyStatic là hệ thống quản trị nội dung (CMS) mã nguồn mở, tập trung vào hiệu suất và bảo mật. Hệ thống được xây dựng dựa trên công nghệ Jamstack, sử dụng các tệp tĩnh để tạo trang web, mang lại tốc độ tải trang nhanh chóng và khả năng mở rộng cao.",
-      "link": "/post/key-static-content-management"
-    },
-    {
-      "image": "/images/homepage/banner/3/image.png",
-      "title": "Sài Gòn lung linh huyền ảo về đêm",
-      "description": "Khi màn đêm buông xuống, Sài Gòn khoác lên mình một chiếc áo hoàn toàn khác, lung linh và huyền ảo hơn bao giờ hết."
-    }
-  ],
-  "latestPost": 9,
-  "about": {
-    "title": "About Title",
-    "intro": "Giới thiệu về trang about page"
-  }
+	"banner": [
+		{
+			"image": "/images/homepage/banner/0/image.jpg",
+			"title": "Vịnh Hạ Long - Kỳ quan thiên nhiên thế giới",
+			"description": "Vịnh Hạ Long là một vịnh biển thuộc thành phố Hạ Long, tỉnh Quảng Ninh, Việt Nam. Nơi đây nổi tiếng với cảnh quan thiên nhiên hùng vĩ, với hàng nghìn đảo đá vôi nhô lên từ biển xanh, tạo nên một bức tranh thiên nhiên vô cùng tráng lệ.\n\nVịnh Hạ Long được UNESCO công nhận là di sản thiên nhiên thế giới vào năm 1994 và là một trong những điểm du lịch nổi tiếng nhất của Việt Nam."
+		},
+		{
+			"image": "/images/homepage/banner/1/image.jpg",
+			"title": "Vẻ đẹp rực rỡ của Hoàng Hôn Vũng Tàu",
+			"description": "Hoàng hôn Vũng Tàu là một trong những cảnh đẹp thiên nhiên thu hút du khách nhất. Khi mặt trời dần khuất sau dãy núi Nhỏ, bầu trời Vũng Tàu như khoác lên mình một chiếc áo rực rỡ với những gam màu đỏ, cam, vàng, hồng.\n\nBầu trời nhuộm màu cam rực rỡ, phản chiếu xuống mặt biển tạo nên một khung cảnh lấp lánh lung linh. Từng tia nắng vàng óng ả len lỏi qua những tán cây, vẽ lên những hình ảnh huyền ảo trên bờ cát."
+		},
+		{
+			"image": "/images/homepage/banner/2/image.avif",
+			"title": "KeyStatic Content Management",
+			"description": "KeyStatic là hệ thống quản trị nội dung (CMS) mã nguồn mở, tập trung vào hiệu suất và bảo mật. Hệ thống được xây dựng dựa trên công nghệ Jamstack, sử dụng các tệp tĩnh để tạo trang web, mang lại tốc độ tải trang nhanh chóng và khả năng mở rộng cao.",
+			"link": "/post/key-static-content-management"
+		},
+		{
+			"image": "/images/homepage/banner/3/image.png",
+			"title": "Sài Gòn lung linh huyền ảo về đêm",
+			"description": "Khi màn đêm buông xuống, Sài Gòn khoác lên mình một chiếc áo hoàn toàn khác, lung linh và huyền ảo hơn bao giờ hết."
+		}
+	],
+	"latestPost": 6,
+	"about": {
+		"title": "About Title",
+		"intro": "Giới thiệu về trang about page"
+	}
 }

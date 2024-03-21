@@ -47,7 +47,7 @@ export default async function LatestPost() {
 
 	return (
 		<div>
-			<h2 className="text-xl lg:text-3xl font-semibold my-10">Latest Posts 222</h2>
+			<h2 className="text-xl lg:text-3xl font-semibold my-10">Latest Posts</h2>
 			{<PostGrid posts={latestPost} />}
 		</div>
 	);

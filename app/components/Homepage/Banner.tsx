@@ -12,7 +12,7 @@ export default function Banner({ props }: { props: any }) {
 	const settings = {
 		dots: true,
 		arrows: false,
-		autoplay: true,
+		autoplay: false,
 		infinite: true,
 		autoplaySpeed: 5000,
 		speed: 2000,
@@ -22,11 +22,11 @@ export default function Banner({ props }: { props: any }) {
 	};
 
 	return (
-		<div className="slider-container w-full m-auto mb-6 relative">
+		<div className="slider-container w-full m-auto max-w-[2048px] mb-6 relative leading-none">
 			<Slider {...settings} className="flex flex-col">
 				{props.map((item: any, index: number) => (
 					<div className="banner-item flex flex-col relative" key={index}>
-						<div className="banner-image  overflow-hidden">
+						<div className="banner-image overflow-hidden">
 							<Image
 								src={item?.image || "/"}
 								alt={item?.title || "title"}

@@ -35,7 +35,7 @@ export default config({
 		navigation: {
 			writing: ["posts", "authors", "categories"],
 			Header: ["menuLinks"],
-			HomePage: ["homepage"],
+			Pages: ["homepage", "technology"],
 			Footer: ["socialLinks"],
 		},
 	},
@@ -54,6 +54,7 @@ export default config({
 				}),
 				content: fields.document({
 					label: "Content",
+
 					//formatting: true,
 					formatting: {
 						alignment: {
@@ -73,7 +74,10 @@ export default config({
 						softBreaks: true,
 					},
 					links: true,
-					images: true,
+					images: {
+						directory: "public/images/posts",
+						publicPath: "/images/posts",
+					},
 					tables: true,
 					// dividers: true,
 					componentBlocks: {
@@ -318,6 +322,33 @@ export default config({
 					title: fields.text({ label: "About Title" }),
 					intro: fields.text({ label: "About Intro", multiline: true }),
 				}),
+			},
+		}),
+		technology: singleton({
+			label: "Technology",
+			path: "app/content/page/technology",
+			format: "json",
+			schema: {
+				technology: fields.array(
+					fields.object({
+						name: fields.text({ label: "Name" }),
+						description: fields.text({ label: "Description" }),
+						icon: fields.image({
+							label: "Icon SVG",
+							description: "Icon Technology File",
+							directory: "public/images/technology/",
+							publicPath: "/images/technology/",
+						}),
+						position: fields.integer({
+							label: "Position",
+							description: "Position of items",
+						}),
+					}),
+					{
+						label: "Technology Featured",
+						itemLabel: (props) => props.fields.name.value,
+					}
+				),
 			},
 		}),
 	},

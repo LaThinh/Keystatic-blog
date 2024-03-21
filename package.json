@@ -12,6 +12,7 @@
     "@keystatic/core": "^0.3.19",
     "@keystatic/next": "^3.0.0",
     "@tailwindcss/container-queries": "^0.1.1",
+    "framer-motion": "^11.0.12",
     "next": "14.1.0",
     "next-transpile-modules": "^10.0.1",
     "react": "^18",

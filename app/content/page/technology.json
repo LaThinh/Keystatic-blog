@@ -1,0 +1,22 @@
+{
+  "technology": [
+    {
+      "name": "NextJs",
+      "description": "111",
+      "icon": "/images/technology/technology/0/icon.svg",
+      "position": 1
+    },
+    {
+      "name": "Tailwind CSS",
+      "description": "222",
+      "icon": "/images/technology/technology/1/icon.svg",
+      "position": 2
+    },
+    {
+      "name": "KeyStatic",
+      "description": "Keystatic contant magener",
+      "icon": "/images/technology/technology/2/icon.svg",
+      "position": 3
+    }
+  ]
+}

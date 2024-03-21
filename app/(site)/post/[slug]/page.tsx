@@ -95,7 +95,7 @@ export default async function PostPage({ params }: { params: { slug: string } })
 
 					<div className="prose w-full @4xl:prose-lg @3xl:max-w-5xl p-3 max-w-4xl @xl:p-5 @4xl:p-6">
 						{postContent && (
-							<div className="post-content max-w-3xl m-auto">
+							<div className="post-content max-w-4xl m-auto">
 								<DocumentRenderer
 									document={postContent}
 									componentBlocks={{

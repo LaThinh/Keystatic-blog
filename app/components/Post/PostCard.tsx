@@ -32,7 +32,7 @@ export default function PostCard({
 			<div className="post-content @container flex flex-col border rounded-xl overflow-hidden hover:shadow-lg bg-white">
 				<Link
 					href={`/post/${post.slug}`}
-					className="post-image aspect-[3.6/2] block max-h-[556px] bg-gray-200 overflow-hidden hover:bg-gray-300"
+					className="post-image aspect-[3.6/2] block max-h-[480px] bg-gray-200 overflow-hidden hover:bg-gray-300"
 				>
 					{post.entry?.heroImage ? (
 						<Image
@@ -59,12 +59,12 @@ export default function PostCard({
 
 					<Link
 						href={`/post/${post.slug}`}
-						className={`post-title w-full capitalize min-h-12 line-clamp-3 text-gray-700 hover:text-sky-500
+						className={`post-title w-full capitalize min-h-12 line-clamp-2 text-gray-700 hover:text-sky-500
 						@xs:line-clamp-2 @xs:h-16  @xs:leading-8 @xs:text-xl 
 						@md:text-2xl @3xl:h-12
 						@4xl:h-auto @4xl:min-h-8`}
 					>
-						<h3>{post.entry.title}</h3>
+						<h4>{post.entry.title}</h4>
 					</Link>
 				</div>
 			</div>
