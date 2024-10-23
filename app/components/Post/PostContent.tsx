@@ -6,7 +6,6 @@ import ShowcaseYoutube from "./ShowcaseYoutube";
 import Image from "next/image";
 
 import hljs from "highlight.js";
-// import "highlight.js/styles/base16/espresso.css";
 import "highlight.js/styles/monokai-sublime.css";
 
 export default function PostContent({ postContent }: { postContent: any }) {
