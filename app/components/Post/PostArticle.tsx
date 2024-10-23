@@ -21,7 +21,7 @@ function PostArticle({ slug }: { slug: string }) {
 
 		const data = await response.json();
 		if (data) setPost(data);
-		console.log(post);
+		// console.log(post);
 	};
 
 	useEffect(() => {
@@ -32,10 +32,17 @@ function PostArticle({ slug }: { slug: string }) {
 	return (
 		<Suspense fallback={<Loading text="Loading Post" />}>
 			<article className="post-article bg-white @xl:border @xl:rounded-2xl @xl:shadow-sm  ">
-				<h1 className="page-title text-3xl @lg:text-5xl @lg:leading-normal text-gradient !my-2 ">{post?.title}</h1>
+				<h1 className="page-title text-3xl @lg:text-5xl @lg:leading-normal text-gradient !my-2 ">
+					{post?.title}
+				</h1>
 				{post?.heroImage && (
 					<div className="post-image">
-						<Image src={`${post.heroImage}`} width="1200" height="500" alt={post?.title || "Post Title"} />
+						<Image
+							src={`${post.heroImage}`}
+							width="1200"
+							height="500"
+							alt={post?.title || "Post Title"}
+						/>
 					</div>
 				)}
 				<div className="prose w-full @4xl:prose-lg @3xl:max-w-5xl p-3 @xl:p-5 @4xl:p-6">
@@ -49,7 +56,9 @@ function PostArticle({ slug }: { slug: string }) {
 							<DocumentRenderer
 								document={post.content}
 								componentBlocks={{
-									"youtube-video": (props) => <ShowcaseYoutube videoId={props.youtubeVideoId} />,
+									"youtube-video": (props) => (
+										<ShowcaseYoutube videoId={props.youtubeVideoId} />
+									),
 								}}
 							/>
 						</div>
@@ -60,7 +69,10 @@ function PostArticle({ slug }: { slug: string }) {
 							<ul className="author-list list-none flex gap-4">
 								{post.postAuthors.map((author) => (
 									<li className="author-item" key={author.slug}>
-										<Link href={`/author/${author.slug}`} className="flex items-center gap-2">
+										<Link
+											href={`/author/${author.slug}`}
+											className="flex items-center gap-2"
+										>
 											<Image
 												src={author.avatar || "/images/avatar.jpg"}
 												alt={`Avatar for ${author.name}`}

@@ -13,14 +13,24 @@ export default async function SocialLinks() {
 					<ul className="flex flex-col">
 						{socialLinks.twitter && (
 							<li className="py-2">
-								<Link href={`https://twitter.com/${socialLinks.twitter}`} target="_blank" rel="noopener noreferrer">
+								<Link
+									className="alink"
+									href={`https://twitter.com/${socialLinks.twitter}`}
+									target="_blank"
+									rel="noopener noreferrer"
+								>
 									Twitter
 								</Link>
 							</li>
 						)}
 						{socialLinks.github && (
 							<li className="py-2 border-t">
-								<Link href={`https://github.com/${socialLinks.github}`} target="_blank" rel="noopener noreferrer">
+								<Link
+									className="alink"
+									href={`https://github.com/${socialLinks.github}`}
+									target="_blank"
+									rel="noopener noreferrer"
+								>
 									Github
 								</Link>
 							</li>
@@ -28,6 +38,7 @@ export default async function SocialLinks() {
 						{socialLinks.linkedin && (
 							<li className="py-2 border-t">
 								<Link
+									className="alink"
 									href={`https://linkedin.com/in/${socialLinks.linkedin}`}
 									target="_blank"
 									rel="noopener noreferrer"
@@ -38,7 +49,12 @@ export default async function SocialLinks() {
 						)}
 						{socialLinks.facebook && (
 							<li className="py-2 border-t">
-								<Link href={`https://facebook.com/${socialLinks.facebook}`} target="_blank" rel="noopener noreferrer">
+								<Link
+									className="alink"
+									href={`https://facebook.com/${socialLinks.facebook}`}
+									target="_blank"
+									rel="noopener noreferrer"
+								>
 									Faccebook
 								</Link>
 							</li>

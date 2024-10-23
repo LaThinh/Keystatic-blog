@@ -84,7 +84,7 @@ h6 {
 }
 
 .sidebar .block .block-content a {
-	@apply text-gray-700 hover:underline;
+	@apply text-gray-700;
 }
 
 .footer-col h3 {
@@ -93,11 +93,23 @@ h6 {
 
 .footer-col li,
 .footer-col .category {
-	@apply text-gray-500 border-none pt-0 pb-1;
+	@apply text-gray-500 border-none pt-0 pb-2;
 }
 
 .footer-col a {
-	@apply text-gray-600 hover:text-gray-800 hover:underline;
+	@apply text-gray-700 hover:text-gray-800;
+}
+
+.alink {
+	@apply relative pb-1;
+}
+.alink:after {
+	content: "";
+	@apply absolute left-0 bottom-0 w-0 transition-all duration-300  h-[1px] bg-slate-700;
+}
+
+.alink:hover::after {
+	@apply w-full;
 }
 
 .post-card .post-content {
@@ -138,4 +150,16 @@ h6 {
 }
 .homepage section:nth-child(2n + 1) {
 	background-color: rgb(226 232 240);
+}
+
+.prose {
+	/* --tw-prose-pre-bg: transparent; */
+}
+
+.prose pre {
+	/* padding: 0; */
+}
+
+.prose .hljs {
+	background-color: inherit;
 }

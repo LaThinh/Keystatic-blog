@@ -18,7 +18,9 @@ export default async function Categories() {
 			<div className="block-content pb-2">
 				{categories.map((category, index) => (
 					<div key={index} className={`category py-2 ${index > 0 ? "border-t" : ""}`}>
-						<Link href={`/post/category/${category.slug}`}>{category.entry.category}</Link>
+						<Link className="alink" href={`/post/category/${category.slug}`}>
+							{category.entry.category}
+						</Link>
 						<span className="count ml-2" style={{ color: category.entry.customColor }}>
 							({getPosts(category.slug)})
 						</span>

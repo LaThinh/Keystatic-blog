@@ -20,7 +20,11 @@ import { Suspense } from "react";
 // 	searchParams: { [key: string]: string | string[] | undefined };
 // };
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({
+	params,
+}: {
+	params: { slug: string };
+}): Promise<Metadata> {
 	// read route params
 	const slug = params.slug;
 
@@ -70,17 +74,24 @@ export default async function Post({ params }: { params: { slug: string } }) {
 		<div className="post-detail w-full my-10 m-auto flex flex-col gap-10 max-w-5xl">
 			<div className="post-detail border rounded-2xl shadow-sm bg-white @container">
 				<Suspense>
-					<h1 className="page-title @lg:text-5xl @lg:leading-normal text-gradient !my-2 ">{post?.title}</h1>
+					<h1 className="page-title @lg:text-5xl @lg:leading-normal text-gradient !my-2 ">
+						{post?.title}
+					</h1>
 					{post?.heroImage && (
 						<div className="post-image">
-							<Image src={`${post.heroImage}`} width="1200" height="500" alt={post?.title || "Post Title"} />
+							<Image
+								src={`${post.heroImage}`}
+								width="1200"
+								height="500"
+								alt={post?.title || "Post Title"}
+							/>
 						</div>
 					)}
 
 					<article className="prose @4xl:prose-lg lg:max-w-5xl p-3 @xl:p-5 @4xl:p-6">
 						{post.categories && post.categories.length > 0 && (
 							<div className="post-categories w-full flex items-center justify-center">
-								<CategoryTags categories={post.categories} />
+								{/* <CategoryTags categories={post.categories} /> */}
 							</div>
 						)}
 						{/* <pre>{JSON.stringify(authors, null, 2)}</pre> */}
@@ -89,7 +100,9 @@ export default async function Post({ params }: { params: { slug: string } }) {
 								<DocumentRenderer
 									document={postContent}
 									componentBlocks={{
-										"youtube-video": (props) => <ShowcaseYoutube videoId={props.youtubeVideoId} />,
+										"youtube-video": (props) => (
+											<ShowcaseYoutube videoId={props.youtubeVideoId} />
+										),
 									}}
 								/>
 							</div>
@@ -100,7 +113,10 @@ export default async function Post({ params }: { params: { slug: string } }) {
 								<ul className="author-list list-none flex gap-4">
 									{authors.map((author) => (
 										<li className="author-item" key={author.slug}>
-											<Link href={`/author/${author.slug}`} className="flex items-center gap-2">
+											<Link
+												href={`/author/${author.slug}`}
+												className="flex items-center gap-2"
+											>
 												<Image
 													src={author.avatar || "/images/avatar.jpg"}
 													alt={`Avatar for ${author.name}`}

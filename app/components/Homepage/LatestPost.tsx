@@ -41,7 +41,7 @@ export default async function LatestPost() {
 	});
 
 	const data = await response.json();
-	console.log(data);
+	// console.log(data);
 
 	const latestPost: IPost[] = data;
 

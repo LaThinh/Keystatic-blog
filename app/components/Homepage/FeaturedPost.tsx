@@ -16,13 +16,16 @@ export default function FeaturedPost() {
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		console.log("use Effect");
 		const fetchPosts = async () => {
 			setLoading(true);
 
 			const apiUrl = "../";
-			const resPost = await fetch(`${apiUrl}api/posts/featured`, { next: { revalidate: 300 } });
-			const resCate = await fetch(`${apiUrl}api/posts/category`, { next: { revalidate: 300 } });
+			const resPost = await fetch(`${apiUrl}api/posts/featured`, {
+				next: { revalidate: 300 },
+			});
+			const resCate = await fetch(`${apiUrl}api/posts/category`, {
+				next: { revalidate: 300 },
+			});
 			const dataPost = await resPost.json();
 			const dataCate = await resCate.json();
 			setFeaturedPosts(dataPost);
@@ -51,17 +54,20 @@ export default function FeaturedPost() {
 									let itemClass = "";
 									switch (index) {
 										case 0:
-											itemClass = "md:col-span-3 md:row-span-2 lg:col-span-1 lg:col-span-2 xl:col-span-3";
+											itemClass =
+												"md:col-span-3 md:row-span-2 lg:col-span-1 lg:col-span-2 xl:col-span-3";
 											break;
 										case 1:
 										case 2:
 											itemClass = "lg:col-span-2 xl:col-span-1";
 											break;
 										case 3:
-											itemClass = "lg:hidden lg:col-span-2 xl:block xl:col-span-1";
+											itemClass =
+												"lg:hidden lg:col-span-2 xl:block xl:col-span-1";
 											break;
 										case 4:
-											itemClass = "md:hidden lg:col-span-2 xl:block xl:col-span-1";
+											itemClass =
+												"md:hidden lg:col-span-2 xl:block xl:col-span-1";
 											break;
 										case 5:
 											itemClass = "col-span-2";
@@ -70,7 +76,11 @@ export default function FeaturedPost() {
 
 									return (
 										<div key={index} className={`featured-post ${itemClass}`}>
-											<PostCard post={post} categories={categories} key={post.slug} />
+											<PostCard
+												post={post}
+												categories={categories}
+												key={post.slug}
+											/>
 										</div>
 									);
 								})}

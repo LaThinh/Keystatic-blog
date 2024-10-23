@@ -1,16 +1,13 @@
-import dynamic from "next/dynamic";
-
 import React, { Suspense } from "react";
 import CategoryTags from "@/app/components/Post/CategoryTags";
-import ShowcaseYoutube from "@/app/components/Post/ShowcaseYoutube";
 import Image from "next/image";
 import Loading from "@/app/components/Loading";
 
-import { DocumentRenderer } from "@keystatic/core/renderer";
 import { Metadata, ResolvingMetadata } from "next";
 import { Reader } from "@/app/keystatic/utils";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import PostContent from "@/app/components/Post/PostContent";
 
 // const { NEXT_PUBLIC_API_URL } = process.env;
 
@@ -21,7 +18,10 @@ type Props = {
 	searchParams: { [key: string]: string | string[] | undefined };
 };
 
-export async function generateMetadata({ params, searchParams }: Props, parent: ResolvingMetadata): Promise<Metadata> {
+export async function generateMetadata(
+	{ params, searchParams }: Props,
+	parent: ResolvingMetadata
+): Promise<Metadata> {
 	const slug = params.slug;
 	// const post: IPostArticle = await response.json();
 	const post = await Reader.collections.posts.read(slug);
@@ -66,14 +66,9 @@ export default async function PostPage({ params }: { params: { slug: string } })
 	return (
 		<div className="post-detail w-full my-10 m-auto flex flex-col gap-10  @container">
 			<Suspense fallback={<Loading text="Loading Post" />}>
-				<article className={`post-article bg-white @xl:border @xl:rounded-2xl @xl:shadow-sm type-${post?.postType} `}>
-					<h1
-						className="page-title text-3xl text-gradient !my-0 px-5
-					@lg:text-4xl @lg:leading-normal max-w-4xl
-					@2xl:text-5xl @2xl:leading-relaxed"
-					>
-						{post?.title}
-					</h1>
+				<article
+					className={`post-article bg-white @xl:border @xl:rounded-2xl @xl:shadow-sm overflow-hidden type-${post?.postType} `}
+				>
 					{post?.heroImage && (
 						<div className="post-image">
 							<Image
@@ -81,29 +76,32 @@ export default async function PostPage({ params }: { params: { slug: string } })
 								width="900"
 								height="500"
 								alt={post?.title || "Post Title"}
-								className="w-full"
+								className="w-full aspect-video object-cover"
 								priority
 							/>
 						</div>
 					)}
 
-					{post?.categories && post.categories.length > 0 && (
-						<div className="post-categories mt-5 w-full flex items-center justify-center">
-							<CategoryTags categories={post.categories} allCategory={categories} />
-						</div>
-					)}
+					<div className="article-header bg-slate-50 flex flex-col gap-3 p-3 lg:p-5">
+						<h1
+							className="page-title text-3xl text-gradient !my-0 !p-0
+					@lg:text-4xl @lg:leading-normal @2xl:text-5xl @2xl:leading-relaxed"
+						>
+							{post?.title}
+						</h1>
 
-					<div className="prose w-full @4xl:prose-lg @3xl:max-w-5xl p-3 max-w-4xl @xl:p-5 @4xl:p-6">
-						{postContent && (
-							<div className="post-content max-w-4xl m-auto">
-								<DocumentRenderer
-									document={postContent}
-									componentBlocks={{
-										"youtube-video": (props) => <ShowcaseYoutube videoId={props.youtubeVideoId} />,
-									}}
+						{post?.categories && post.categories.length > 0 && (
+							<div className="post-categories w-full flex items-center justify-center">
+								<CategoryTags
+									categories={post.categories}
+									allCategory={categories}
 								/>
 							</div>
 						)}
+					</div>
+
+					<div className="prose w-full m-auto @4xl:prose-lg @3xl:max-w-4xl p-3 max-w-3xl @xl:p-5 @4xl:p-6">
+						{postContent && <PostContent postContent={postContent} />}
 
 						{authors && authors.length > 0 && (
 							<div className="authors border-t mt-10 pt-5">
@@ -111,7 +109,10 @@ export default async function PostPage({ params }: { params: { slug: string } })
 								<ul className="author-list list-none flex gap-4">
 									{authors.map((author) => (
 										<li className="author-item" key={author.slug}>
-											<Link href={`/author/${author.slug}`} className="flex items-center gap-2">
+											<Link
+												href={`/author/${author.slug}`}
+												className="flex items-center gap-2"
+											>
 												<Image
 													src={author.avatar || "/images/avatar.jpg"}
 													alt={`Avatar for ${author.name}`}
@@ -133,8 +134,8 @@ export default async function PostPage({ params }: { params: { slug: string } })
 	);
 }
 
-export async function generateStaticParams() {
-	const postSlugs = await Reader.collections.posts.list();
+// export async function generateStaticParams() {
+// 	const postSlugs = await Reader.collections.posts.list();
 
-	return postSlugs.map((postSlug) => ({ slug: postSlug }));
-}
+// 	return postSlugs.map((postSlug) => ({ slug: postSlug }));
+// }

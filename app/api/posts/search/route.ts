@@ -8,7 +8,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
 	const { searchParams } = new URL(request.url);
 	const categoryId = searchParams.get("id");
 
-	console.log(searchParams);
+	// console.log(searchParams);
 
 	try {
 		const posts = await Reader.collections.posts.all();

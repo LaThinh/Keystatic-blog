@@ -22,7 +22,7 @@ export default function Banner({ props }: { props: any }) {
 	};
 
 	return (
-		<div className="slider-container w-full m-auto max-w-[2048px] mb-6 relative leading-none">
+		<div className="slider-container w-full m-auto max-w-[2700px] mb-6 relative leading-none">
 			<Slider {...settings} className="flex flex-col">
 				{props.map((item: any, index: number) => (
 					<div className="banner-item flex flex-col relative" key={index}>
@@ -32,7 +32,7 @@ export default function Banner({ props }: { props: any }) {
 								alt={item?.title || "title"}
 								width={2000}
 								height={900}
-								className="w-full max-h-[900px] aspect-[20/9] object-cover"
+								className="w-full max-h-[80vh] aspect-[9/12] md:aspect-square lg:aspect-[20/9] object-cover"
 							/>
 						</div>
 						<div
@@ -40,10 +40,17 @@ export default function Banner({ props }: { props: any }) {
                                 md:absolute md:left-[5%] md:top-[50%] md:translate-y-[-50%] md:z-10 md:w-[90%] md:max-w-[720px] 
                                 md:rounded-xl text-white bg-slate-600/70"
 						>
-							<h2 className="banner-title text-3xl lg:text-5xl lg:leading-normal">{item?.title}</h2>
-							<p className="banner-desc min-h-32 leading-relaxed lg:text-lg line-clamp-5">{item?.description}</p>
+							<h2 className="banner-title text-3xl lg:text-5xl lg:leading-normal">
+								{item?.title}
+							</h2>
+							<p className="banner-desc min-h-32 leading-relaxed lg:text-lg line-clamp-5">
+								{item?.description}
+							</p>
 							{item?.link && (
-								<Link className="px-10 py-2 rounded-md bg-sky-500 hover:bg-sky-600 !text-white" href={item.link}>
+								<Link
+									className="px-10 hidden py-2 rounded-md bg-sky-500 hover:bg-sky-600 !text-white"
+									href={item.link}
+								>
 									{"View more"}
 								</Link>
 							)}
