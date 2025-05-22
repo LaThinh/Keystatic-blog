@@ -9,10 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@keystatic/core": "^0.3.19",
+    "@keystatic/core": "^0.5.47",
     "@keystatic/next": "^3.0.0",
     "@tailwindcss/container-queries": "^0.1.1",
-    "next": "14.1.0",
+    "next": "^14.2.29",
     "react": "^18",
     "react-dom": "^18",
     "react-slick": "^0.30.2",
